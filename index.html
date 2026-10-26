@@ -313,7 +313,8 @@
   }
   @media (min-width:901px){.mobile-menu{display:none !important}}
 
-</style>
+nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+  </style>
 </head>
 <body>
 
@@ -333,21 +334,18 @@
       <span class="sub">Institute</span>
     </a>
     <nav class="main" aria-label="Main navigation">
-      <a href="#who"><span class="t-en">Who it&rsquo;s for</span><span class="t-fr">Pour qui</span></a>
-      <a href="#how"><span class="t-en">How it works</span><span class="t-fr">Comment ça marche</span></a>
-      <a href="#commitment"><span class="t-en">Our commitment</span><span class="t-fr">Notre engagement</span></a>
-      <a href="#contact"><span class="t-en">Contact</span><span class="t-fr">Contact</span></a>
+      <a href="#top" aria-current="page"><span class="t-en">Home</span><span class="t-fr">Accueil</span></a>
+      <a href="government.html"><span class="t-en">Government</span><span class="t-fr">Gouvernement</span></a>
+      <a href="https://www.verballinkinstitute.ca/about-us"><span class="t-en">About us</span><span class="t-fr">À propos</span></a>
     </nav>
     <a class="btn btn-gold" href="https://www.verballinkinstitute.ca/demo-class-landing-page"><span class="t-en">Book a free trial class</span><span class="t-fr">Réservez un cours d’essai gratuit</span></a>
     <div class="lang-toggle" role="group" aria-label="Language"><button type="button" data-lang="en" class="active">EN</button><button type="button" data-lang="fr">FR</button></div>
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">⋮</button>
   </div>
   <nav class="mobile-menu" id="mobileMenu" aria-label="Menu">
-    <a href="#top"><span class="t-en">Home</span><span class="t-fr">Accueil</span></a>
-    <a href="#who"><span class="t-en">Who it&rsquo;s for</span><span class="t-fr">Pour qui</span></a>
-    <a href="#how"><span class="t-en">How it works</span><span class="t-fr">Comment &ccedil;a marche</span></a>
-    <a href="#commitment"><span class="t-en">Our commitment</span><span class="t-fr">Notre engagement</span></a>
-    <a href="#contact"><span class="t-en">Contact</span><span class="t-fr">Contact</span></a>
+    <a href="#top" aria-current="page"><span class="t-en">Home</span><span class="t-fr">Accueil</span></a>
+    <a href="government.html"><span class="t-en">Government</span><span class="t-fr">Gouvernement</span></a>
+    <a href="https://www.verballinkinstitute.ca/about-us"><span class="t-en">About us</span><span class="t-fr">À propos</span></a>
     <a class="btn btn-gold" href="https://www.verballinkinstitute.ca/demo-class-landing-page"><span class="t-en">Book a free trial class</span><span class="t-fr">R&eacute;servez un cours d&rsquo;essai gratuit</span></a>
   </nav>
 </header>

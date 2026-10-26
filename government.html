@@ -357,6 +357,17 @@
     html{scroll-behavior:auto}
     *{transition:none !important}
   }
+  /* ---------- mobile menu ---------- */
+  .menu-btn{display:none}
+  .mobile-menu{display:none}
+  @media (max-width:900px){
+    .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-size:24px;font-weight:700;cursor:pointer;flex-shrink:0;margin-left:12px}
+    header.menu-open .mobile-menu{display:flex;flex-direction:column;gap:2px;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm);padding:10px 20px 16px;z-index:60}
+    header.site .mobile-menu a{padding:11px 4px;font-weight:700;color:var(--ink);text-decoration:none;border-radius:8px}
+    header.site .mobile-menu a.btn-gold{display:block;margin-left:0;margin-top:8px;text-align:center}
+  }
+  @media (min-width:901px){.mobile-menu{display:none !important}}
+
 </style>
 </head>
 <body>
@@ -384,7 +395,16 @@
       <a href="#feedback">Learner feedback</a>
     </nav>
     <a class="btn btn-gold" href="https://www.verballinkinstitute.ca/book-a-consultation">Book a free consultation</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">⋮</button>
   </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Menu">
+    <a href="#levels">Training levels</a>
+    <a href="#approach">Our approach</a>
+    <a href="#covers">What we cover</a>
+    <a href="#who">Who it&rsquo;s for</a>
+    <a href="#feedback">Learner feedback</a>
+    <a class="btn btn-gold" href="https://www.verballinkinstitute.ca/book-a-consultation">Book a free consultation</a>
+  </nav>
 </header>
 
 <main id="top">
@@ -823,6 +843,31 @@
   document.getElementById('lightboxClose').addEventListener('click', closeLb);
   lb.addEventListener('click', function(e){ if (e.target === lb) closeLb(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLb(); });
+})();
+</script>
+<script>
+(function(){
+  var header = document.querySelector('header.site');
+  var btn = header ? header.querySelector('.menu-btn') : null;
+  var menu = header ? header.querySelector('.mobile-menu') : null;
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = header.classList.toggle('menu-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      header.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if (!header.contains(e.target)){
+      header.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
 })();
 </script>
 </body>

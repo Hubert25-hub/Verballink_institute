@@ -302,6 +302,17 @@
   .lang-toggle button{padding:7px 12px;background:transparent;border:0;font-weight:700;font-size:13px;cursor:pointer;color:var(--ink-soft)}
   .lang-toggle button.active{background:var(--violet);color:#fff}
 
+  /* ---------- mobile menu ---------- */
+  .menu-btn{display:none}
+  .mobile-menu{display:none}
+  @media (max-width:900px){
+    .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-size:24px;font-weight:700;cursor:pointer;flex-shrink:0;margin-left:12px}
+    header.menu-open .mobile-menu{display:flex;flex-direction:column;gap:2px;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm);padding:10px 20px 16px;z-index:60}
+    header.site .mobile-menu a{padding:11px 4px;font-weight:700;color:var(--ink);text-decoration:none;border-radius:8px}
+    header.site .mobile-menu a.btn-gold{display:block;margin-left:0;margin-top:8px;text-align:center}
+  }
+  @media (min-width:901px){.mobile-menu{display:none !important}}
+
 </style>
 </head>
 <body>
@@ -330,7 +341,16 @@
     </nav>
     <a class="btn btn-gold" href="https://www.verballinkinstitute.ca/demo-class-landing-page"><span class="t-en">Book a free trial class</span><span class="t-fr">Réservez un cours d’essai gratuit</span></a>
     <div class="lang-toggle" role="group" aria-label="Language"><button type="button" data-lang="en" class="active">EN</button><button type="button" data-lang="fr">FR</button></div>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">⋮</button>
   </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Menu">
+    <a href="#programs"><span class="t-en">Programs</span><span class="t-fr">Programmes</span></a>
+    <a href="#who"><span class="t-en">Who it&rsquo;s for</span><span class="t-fr">Pour qui</span></a>
+    <a href="#how"><span class="t-en">How it works</span><span class="t-fr">Comment &ccedil;a marche</span></a>
+    <a href="#commitment"><span class="t-en">Our commitment</span><span class="t-fr">Notre engagement</span></a>
+    <a href="#contact"><span class="t-en">Contact</span><span class="t-fr">Contact</span></a>
+    <a class="btn btn-gold" href="https://www.verballinkinstitute.ca/demo-class-landing-page"><span class="t-en">Book a free trial class</span><span class="t-fr">R&eacute;servez un cours d&rsquo;essai gratuit</span></a>
+  </nav>
 </header>
 
 <main id="top">
@@ -740,6 +760,31 @@
   var saved = null;
   try{ saved = localStorage.getItem('vl-lang'); }catch(e){}
   setLang(saved === 'fr' ? 'fr' : 'en');
+})();
+</script>
+<script>
+(function(){
+  var header = document.querySelector('header.site');
+  var btn = header ? header.querySelector('.menu-btn') : null;
+  var menu = header ? header.querySelector('.mobile-menu') : null;
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = header.classList.toggle('menu-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      header.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if (!header.contains(e.target)){
+      header.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
 })();
 </script>
 </body>

@@ -160,13 +160,14 @@
     box-shadow:var(--shadow-sm);
   }
   @media (max-width:700px){ .level{grid-template-columns:1fr;gap:18px;padding:26px 22px} }
+  .level .level-head{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
   .level .badge{
     width:104px;height:104px;border-radius:22px;background:var(--surface-2);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+    display:flex;align-items:center;justify-content:center;
   }
   @media (max-width:700px){ .level .badge{width:84px;height:84px} }
   .level .badge .big-letter{font-family:"Sora",sans-serif;font-weight:800;font-size:52px;line-height:1;color:var(--violet)}
-  .level .badge .lv{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink)}
+  .level .lv{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);line-height:1.5}
   .level h3{font-size:24px;font-weight:800}
   .level h3 span{color:var(--violet)}
   .level .intro{color:var(--ink-soft);margin-top:10px}
@@ -445,7 +446,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
     </div>
     <div class="levels">
       <article class="level">
-      <div class="badge"><span class="big-letter">A1</span><span class="lv"><span class="t-en">Beginner</span><span class="t-fr">Débutant</span></span></div>
+      <div class="level-head"><div class="badge"><span class="big-letter">A1</span></div><span class="lv"><span class="t-en">Beginner</span><span class="t-fr">Débutant</span></span></div>
       <div>
         <h3><span class="t-en">A1 Beginner TCF Canada preparation</span><span class="t-fr">Préparation au TCF Canada A1 Débutant</span></h3>
         <p class="intro"><span class="t-en">Recommended for: complete beginners or learners with very limited knowledge of French.</span><span class="t-fr">Recommandé pour : les débutants complets ou les apprenants ayant une connaissance très limitée du français.</span></p>
@@ -457,7 +458,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
         <ul><li><span class="tick">✓</span><span><span class="t-en">Free VLI TCF-focused textbook</span><span class="t-fr">Manuel gratuit VLI axé sur le TCF</span></span></li><li><span class="tick">✓</span><span><span class="t-en">Speaking practice</span><span class="t-fr">Pratique de l’expression orale</span></span></li><li><span class="tick">✓</span><span><span class="t-en">Instructor feedback</span><span class="t-fr">Commentaires du formateur</span></span></li><li><span class="tick">✓</span><span><span class="t-en">End-of-level assessment</span><span class="t-fr">Évaluation de fin de niveau</span></span></li><li><span class="tick">✓</span><span><span class="t-en">Simulated oral examination with a certified TCF examiner</span><span class="t-fr">Examen oral simulé avec un examinateur certifié du TCF</span></span></li></ul>
       </div>
     </article><article class="level">
-      <div class="badge"><span class="big-letter">A2</span><span class="lv"><span class="t-en">Elementary</span><span class="t-fr">Élémentaire</span></span></div>
+      <div class="level-head"><div class="badge"><span class="big-letter">A2</span></div><span class="lv"><span class="t-en">Elementary</span><span class="t-fr">Élémentaire</span></span></div>
       <div>
         <h3><span class="t-en">A2 Elementary TCF Canada preparation</span><span class="t-fr">Préparation au TCF Canada A2 Élémentaire</span></h3>
         <p class="intro"><span class="t-en">Recommended for: learners who already understand basic French and can communicate in simple everyday situations.</span><span class="t-fr">Recommandé pour : les apprenants qui comprennent déjà le français de base et peuvent communiquer dans des situations simples de la vie quotidienne.</span></p>
@@ -469,7 +470,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
         <ul><li><span class="tick">✓</span><span><span class="t-en">Free VLI TCF-focused textbook</span><span class="t-fr">Manuel gratuit VLI axé sur le TCF</span></span></li><li><span class="tick">✓</span><span><span class="t-en">TCF speaking activities</span><span class="t-fr">Activités d’expression orale du TCF</span></span></li><li><span class="tick">✓</span><span><span class="t-en">Instructor feedback</span><span class="t-fr">Commentaires du formateur</span></span></li><li><span class="tick">✓</span><span><span class="t-en">End-of-level assessment</span><span class="t-fr">Évaluation de fin de niveau</span></span></li><li><span class="tick">✓</span><span><span class="t-en">Simulated oral examination with a certified TCF examiner</span><span class="t-fr">Examen oral simulé avec un examinateur certifié du TCF</span></span></li></ul>
       </div>
     </article><article class="level">
-      <div class="badge"><span class="big-letter">B1</span><span class="lv"><span class="t-en">Intermediate</span><span class="t-fr">Intermédiaire</span></span></div>
+      <div class="level-head"><div class="badge"><span class="big-letter">B1</span></div><span class="lv"><span class="t-en">Intermediate</span><span class="t-fr">Intermédiaire</span></span></div>
       <div>
         <h3><span class="t-en">B1 Intermediate TCF Canada preparation</span><span class="t-fr">Préparation au TCF Canada B1 Intermédiaire</span></h3>
         <p class="intro"><span class="t-en">Recommended for: independent French learners who can communicate in familiar situations but need greater fluency, accuracy and TCF-specific skills.</span><span class="t-fr">Recommandé pour : les apprenants de français indépendants qui peuvent communiquer dans des situations familières mais qui ont besoin d’une plus grande aisance, d’une plus grande précision et de compétences propres au TCF.</span></p>
@@ -481,7 +482,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
         <ul><li><span class="tick">✓</span><span><span class="t-en">Free TCF-focused textbook</span><span class="t-fr">Manuel gratuit axé sur le TCF</span></span></li><li><span class="tick">✓</span><span><span class="t-en">Speaking simulations</span><span class="t-fr">Simulations d’expression orale</span></span></li><li><span class="tick">✓</span><span><span class="t-en">Personalized feedback</span><span class="t-fr">Commentaires personnalisés</span></span></li><li><span class="tick">✓</span><span><span class="t-en">End-of-level assessment</span><span class="t-fr">Évaluation de fin de niveau</span></span></li><li><span class="tick">✓</span><span><span class="t-en">Simulated oral examination with a certified TCF examiner</span><span class="t-fr">Examen oral simulé avec un examinateur certifié du TCF</span></span></li></ul>
       </div>
     </article><article class="level">
-      <div class="badge"><span class="big-letter">B2</span><span class="lv"><span class="t-en">Upper intermediate</span><span class="t-fr">Intermédiaire supérieur</span></span></div>
+      <div class="level-head"><div class="badge"><span class="big-letter">B2</span></div><span class="lv"><span class="t-en">Upper intermediate</span><span class="t-fr">Intermédiaire supérieur</span></span></div>
       <div>
         <h3><span class="t-en">B2 Upper intermediate TCF Canada preparation</span><span class="t-fr">Préparation au TCF Canada B2 Intermédiaire supérieur</span></h3>
         <p class="intro"><span class="t-en">Recommended for: independent French speakers seeking stronger fluency, argumentation skills and TCF Canada performance.</span><span class="t-fr">Recommandé pour : les locuteurs de français indépendants qui souhaitent une plus grande aisance, des compétences d’argumentation et un meilleur rendement au TCF Canada.</span></p>

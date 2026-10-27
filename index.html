@@ -321,6 +321,22 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   .cart-count{display:none;min-width:22px;height:22px;border-radius:11px;background:var(--gold);color:#3A2A00;font-size:13px;font-weight:800;align-items:center;justify-content:center;padding:0 5px}
   .cart-count.show{display:inline-flex}
   @media (max-width:520px){ header.site .wrap{gap:12px} .cart-btn{padding:10px 12px;font-size:14px} }
+
+.hero-search-wrap{margin-top:30px}
+.hero-search{position:relative;max-width:640px;margin:0 auto}
+.hero-search .search-box{position:relative}
+.hero-search input[type="search"]{width:100%;padding:15px 20px 15px 50px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font-size:16px;outline:none;-webkit-appearance:none;appearance:none}
+.hero-search input[type="search"]:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(91,58,142,.14)}
+.hero-search input[type="search"]::placeholder{color:var(--ink-soft)}
+.hero-search .search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--violet);pointer-events:none}
+.hero-search .search-icon svg{display:block}
+.search-results{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:60;margin:0;padding:8px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);text-align:left}
+.search-results[hidden]{display:none}
+.search-results a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 12px;border-radius:10px;color:var(--ink);text-decoration:none}
+.search-results a:hover,.search-results a:focus{background:var(--surface-2);outline:none}
+.search-results .res-type{flex:none;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
+.search-results .res-none{padding:11px 12px;color:var(--ink-soft)}
+
   </style>
 </head>
 <body>
@@ -404,6 +420,15 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
           </div>
         </div>
       </div>
+    </div>
+    <div class="wrap hero-search-wrap">
+      <form class="hero-search" role="search" id="siteSearchForm">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+          <input type="search" id="siteSearch" placeholder="Search..." aria-label="Search the site" autocomplete="off" />
+        </div>
+        <ul class="search-results" id="siteSearchResults" hidden></ul>
+      </form>
     </div>
   </section>
 
@@ -820,5 +845,122 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   if (c > 0) { countEl.classList.add("show"); } else { countEl.classList.remove("show"); }
 })();
 </script>
+<script>
+(function(){
+  /* SEARCH-CORE-START */
+  var SEARCH_ENTRIES = [
+    {en:"Home", fr:"Accueil", href:"index.html", type:"page", keys:"verbal link institute"},
+    {en:"Government", fr:"Gouvernement", href:"government.html", type:"program", keys:"sle plf2 public service fonction publique evaluation seconde langue"},
+    {en:"About Us", fr:"À propos", href:"about.html", type:"page", keys:"about institute mission"},
+    {en:"Our Team", fr:"Notre équipe", href:"our-team.html", type:"page", keys:"team williams atanga teachers formateurs"},
+    {en:"TCF/TEF Preparation", fr:"Préparation TCF/TEF Canada", href:"tcf-tef-preparation.html", type:"program", keys:"tcf tef exam examen preparation levels a1 a2 b1 b2 courses cours"},
+    {en:"TEF Canada", fr:"TEF Canada", href:"tef-canada.html", type:"program", keys:"tef exam examen canada levels a1 a2 b1 b2"},
+    {en:"Placement Test", fr:"Test de placement", href:"placement-test.html", type:"page", keys:"test level niveau free gratuit assessment"},
+    {en:"Registration", fr:"Inscription", href:"registration.html", type:"page", keys:"register enroll inscription sign up"},
+    {en:"Demo class", fr:"Cours d'essai", href:"demo-class.html", type:"program", keys:"trial free gratuit demo class cours essai"},
+    {en:"School Application Intake", fr:"Admission scolaire", href:"school-application-intake.html", type:"page", keys:"school admission application etudes"},
+    {en:"Our Services", fr:"Nos services", href:"our-services.html", type:"page", keys:"services international student etudiant career settlement"},
+    {en:"Book a Consultation", fr:"Réserver une consultation", href:"book-a-consultation.html", type:"page", keys:"consultation free gratuite appointment rendez vous"},
+    {en:"Products and Services", fr:"Produits et services", href:"products-and-services.html", type:"page", keys:"programs services courses cours"},
+    {en:"Shop", fr:"Boutique", href:"shop.html", type:"page", keys:"shop buy price prix products produits store"},
+    {en:"Cart", fr:"Panier", href:"cart.html", type:"page", keys:"cart checkout order commande payment paiement"},
+    {en:"Blog", fr:"Blog", href:"blog.html", type:"page", keys:"blog articles news nouvelles"},
+    {en:"Policy & Research Hub", fr:"Centre de politiques et de recherche", href:"policy-research-hub.html", type:"page", keys:"research recherche policy politique briefs pdf"},
+    {en:"Privacy Policy", fr:"Politique de confidentialité", href:"privacy-policy.html", type:"page", keys:"privacy confidentialite pipeda policy"},
+    {en:"Assessment fees", fr:"Frais d’évaluation", href:"shop.html#assessment-fees", type:"product", keys:"assessment fees frais evaluation test"},
+    {en:"French Classes for Kids (Home & Online Service)", fr:"Cours de français pour enfants (service à domicile et en ligne)", href:"shop.html#french-classes-kids", type:"product", keys:"kids enfants children cours francais home online domicile ligne"},
+    {en:"French exam Preparation (80 hours) A1-A2", fr:"Préparation à l’examen de français (80 heures) A1-A2", href:"shop.html#french-exam-a1-a2", type:"product", keys:"exam examen tcf tef a1 a2 preparation hours heures"},
+    {en:"French Exam Preparation for Public Servants", fr:"Préparation à l’examen de français pour fonctionnaires", href:"shop.html#french-exam-public-servants", type:"product", keys:"exam examen public servants fonctionnaires government sle"},
+    {en:"Immigration guidance instalment", fr:"Accompagnement en immigration (versement)", href:"shop.html#immigration-guidance", type:"product", keys:"immigration guidance accompagnement versement instalment"},
+    {en:"Nursing Relocation Support (Installement)", fr:"Soutien à la relocalisation des infirmiers (Installement)", href:"shop.html#nursing-relocation", type:"product", keys:"nursing infirmiers relocation relocalisation support soutien"},
+    {en:"TCF/TEF Exam Preparation B1-B2 (oral)", fr:"Préparation à l’examen TCF/TEF B1-B2 (oral)", href:"shop.html#tcf-tef-b1-b2-oral", type:"product", keys:"tcf tef exam examen oral b1 b2 preparation"},
+    {en:"TCF/TEF Preparation (One on One)", fr:"Préparation TCF/TEF (cours individuel)", href:"shop.html#tcf-tef-one-on-one", type:"product", keys:"tcf tef one on one individuel private cours"},
+    {en:"Réussir TCF et TEF Canada, manuel complet A1-B2 (Williams Atanga)", fr:"Réussir TCF et TEF Canada, manuel complet A1-B2 (Williams Atanga)", href:"shop.html#reussir-tcf-tef-manuel", type:"product", keys:"book livre manuel atanga tcf tef a1 b2"},
+    {en:"The Post-Secondary Continuity Gap in French Immersion Education in British Columbia: Evidence from University Programming and Student Behaviour", fr:"Le fossé de continuité postsecondaire en immersion française en Colombie-Britannique : données issues des programmes universitaires et du comportement des étudiants", href:"blog.html", type:"article", keys:"continuity immersion post secondary universitaire"},
+    {en:"Bridging Classrooms: Francophone Teacher Pathways to British Columbia", fr:"Relier les classes : les parcours des enseignants francophones vers la Colombie-Britannique", href:"blog.html", type:"article", keys:"teachers enseignants francophone pathways"},
+    {en:"Book TCF Canada", fr:"Réservez le TCF Canada", href:"blog.html", type:"article", keys:"book livre tcf canada test centre"},
+    {en:"The Post-Secondary Continuity Gap in French Immersion Education in British Columbia: Evidence from University Programming and Student Behaviour", fr:"Le fossé de continuité postsecondaire en immersion française en Colombie-Britannique : données issues des programmes universitaires et du comportement des étudiants", href:"policy-research-hub.html", type:"article", keys:"research recherche policy politique pdf brief"},
+    {en:"Bridging Classrooms: Francophone Teacher Pathways to British Columbia", fr:"Relier les classes : les parcours des enseignants francophones vers la Colombie-Britannique", href:"policy-research-hub.html", type:"article", keys:"research recherche policy politique pdf brief teachers"}
+  ];
+  function searchNorm(s){ return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/-/g, " "); }
+  function searchEntries(q){
+    var words = searchNorm(q).split(/\s+/).filter(function(w){ return w.length > 0; });
+    if (words.length === 0) { return []; }
+    var out = [];
+    SEARCH_ENTRIES.forEach(function(e){
+      var hay = searchNorm(e.en + " " + e.fr + " " + e.keys);
+      var ok = words.every(function(w){ return hay.indexOf(w) !== -1; });
+      if (ok) { out.push(e); }
+    });
+    return out.slice(0, 10);
+  }
+  /* SEARCH-CORE-END */
+  function curLang(){ return document.documentElement.lang === "fr" ? "fr" : "en"; }
+  var TYPE_LABEL = { page: {en:"Page", fr:"Page"}, program: {en:"Program", fr:"Programme"}, product: {en:"Product", fr:"Produit"}, article: {en:"Article", fr:"Article"} };
+  var UI = {
+    placeholder: {en:"Search...", fr:"Rechercher..."},
+    aria: {en:"Search the site", fr:"Rechercher sur le site"},
+    none: {en:"No results found", fr:"Aucun résultat trouvé"}
+  };
+  var form = document.getElementById("siteSearchForm");
+  var input = document.getElementById("siteSearch");
+  var list = document.getElementById("siteSearchResults");
+  if (!form || !input || !list) { return; }
+  function render(){
+    var q = input.value;
+    var lang = curLang();
+    var results = searchEntries(q);
+    list.innerHTML = "";
+    if (searchNorm(q).replace(/\s+/g, "").length === 0) { list.hidden = true; return; }
+    if (results.length === 0) {
+      var li = document.createElement("li");
+      li.className = "res-none";
+      li.textContent = UI.none[lang];
+      list.appendChild(li);
+    } else {
+      results.forEach(function(e){
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.href = e.href;
+        var t = document.createElement("span");
+        t.textContent = lang === "fr" ? e.fr : e.en;
+        var ty = document.createElement("span");
+        ty.className = "res-type";
+        ty.textContent = TYPE_LABEL[e.type][lang];
+        a.appendChild(t);
+        a.appendChild(ty);
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    }
+    list.hidden = false;
+  }
+  function applyLang(){
+    var lang = curLang();
+    input.placeholder = UI.placeholder[lang];
+    input.setAttribute("aria-label", UI.aria[lang]);
+    if (!list.hidden) { render(); }
+  }
+  form.addEventListener("submit", function(ev){ ev.preventDefault(); });
+  input.addEventListener("input", render);
+  input.addEventListener("keydown", function(ev){
+    if (ev.key === "Enter") {
+      var first = list.querySelector("a");
+      if (first) { ev.preventDefault(); window.location.href = first.getAttribute("href"); }
+    } else if (ev.key === "Escape") {
+      input.value = "";
+      list.hidden = true;
+      input.blur();
+    }
+  });
+  document.addEventListener("click", function(ev){
+    if (!form.contains(ev.target)) { list.hidden = true; }
+  });
+  var obs = new MutationObserver(function(){ applyLang(); });
+  obs.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+  applyLang();
+})();
+</script>
+
 </body>
 </html>

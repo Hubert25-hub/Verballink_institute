@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+<head><script>try{var l=localStorage.getItem('vl-lang');if(l==='fr'||l==='en'){document.documentElement.lang=l;}}catch(e){}</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="data:," />
+<title>Cart | Verbal Link Institute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --bg-tint:#FAF8FC;
+    --surface:#FFFFFF;
+    --surface-2:#F3EEFA;
+    --ink:#251239;
+    --ink-soft:#57496E;
+    --line:#E4DCF2;
+    --violet:#5B3A8E;
+    --violet-deep:#3E2566;
+    --gold:#E8A020;
+    --gold-ink:#7A5200;
+    --gold-soft:#FDF3DC;
+    --good:#1E7A46;
+    --good-soft:#E4F4EA;
+    --shadow:0 18px 44px rgba(46,25,84,.14);
+    --shadow-sm:0 6px 18px rgba(46,25,84,.10);
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"Sora",system-ui,sans-serif;line-height:1.15;margin:0;color:var(--ink)}
+  p{margin:0}
+  a{color:var(--violet)}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  section{padding:76px 0}
+  .section-head{max-width:720px;margin-bottom:38px}
+  .section-head h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;letter-spacing:-.01em}
+  .section-head p{color:var(--ink-soft);margin-top:12px;font-size:18px}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--violet);margin-bottom:14px;
+  }
+  .kicker::before{content:"";width:26px;height:3px;border-radius:2px;background:var(--gold)}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-family:"Sora",sans-serif;font-weight:700;font-size:16.5px;line-height:1;
+    padding:16px 26px;border-radius:14px;text-decoration:none;border:2px solid transparent;
+    cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+    min-height:52px;text-align:center;
+  }
+  .btn:active{transform:scale(.98)}
+  .btn-gold{background:var(--gold);color:var(--gold-ink);box-shadow:0 10px 24px rgba(232,160,32,.35)}
+  .btn-gold:hover{transform:translateY(-2px)}
+  .btn-violet{background:var(--violet);color:#fff;box-shadow:var(--shadow-sm)}
+  .btn-violet:hover{transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--violet);border-color:var(--violet)}
+  .btn-ghost:hover{background:var(--surface-2)}
+  .btn .arr{font-weight:800}
+
+  /* ---------- top strip + header ---------- */
+  .topstrip{background:var(--surface);color:var(--ink-soft);font-size:13.5px;border-bottom:1px solid var(--line)}
+  .topstrip .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+  .topstrip a{color:var(--violet);text-decoration:none;font-weight:600}
+  .topstrip .right{display:flex;gap:22px;flex-wrap:wrap}
+  @media (max-width:640px){
+    .topstrip{display:none}
+    .topstrip .wrap{justify-content:center}
+    .topstrip .right{justify-content:center;gap:18px}
+  }
+  header.site{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+  header.site .wrap{display:flex;align-items:center;gap:28px;padding-top:14px;padding-bottom:14px}
+  .wordmark{text-decoration:none;line-height:1.05;flex-shrink:0}
+  .wordmark .name{font-family:"Sora",sans-serif;font-weight:800;font-size:23px;color:var(--ink);letter-spacing:-.01em}
+  .wordmark .name em{font-style:normal;color:var(--violet)}
+  .wordmark .sub{display:block;font-size:10.5px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+  nav.main{display:flex;gap:26px;margin-left:auto}
+  nav.main a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15.5px}
+  nav.main a:hover{color:var(--violet)}
+  header.site .btn{margin-left:8px;padding:13px 20px;min-height:46px;font-size:15px}
+  @media (max-width:900px){ nav.main{display:none} header.site .btn{margin-left:auto} }
+  @media (max-width:520px){ header.site .btn{display:none} .wordmark .name{font-size:20px} }
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--bg);padding:64px 0 84px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+  @media (max-width:960px){ .hero-grid{grid-template-columns:1fr;gap:44px} }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:9px;background:var(--surface);
+    border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 10px;
+    font-size:14px;font-weight:600;color:var(--ink-soft);box-shadow:var(--shadow-sm);
+  }
+  .hero-badge .dot{width:22px;height:22px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:#3A2A00;font-size:11px;font-weight:800}
+  .hero h1{font-size:clamp(36px,5vw,56px);font-weight:800;letter-spacing:-.015em;margin:22px 0 18px}
+  .hero h1 .hl{color:var(--violet);box-shadow:inset 0 -0.32em 0 var(--gold-soft);border-radius:2px}
+  .hero .lede{font-size:19px;color:var(--ink-soft);max-width:540px}
+  .hero .lede + .lede{margin-top:12px;font-size:17px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .trust-row{display:flex;gap:10px 26px;flex-wrap:wrap;margin-top:28px}
+  .trust-row span{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--ink)}
+  .trust-row .tick{
+    width:20px;height:20px;border-radius:50%;background:var(--good-soft);color:var(--good);
+    display:grid;place-items:center;font-size:12px;font-weight:800;flex-shrink:0;
+  }
+  .hero-media{position:relative}
+  .hero-photo{border-radius:22px;box-shadow:var(--shadow);width:100%;height:auto;aspect-ratio:800/533;object-fit:cover}
+
+  /* ---------- level finder card ---------- */
+  .finder{
+    background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    box-shadow:var(--shadow);padding:22px;margin-top:-64px;margin-left:26px;margin-right:26px;position:relative;
+  }
+  @media (max-width:560px){ .finder{margin-left:8px;margin-right:8px;margin-top:-40px;padding:18px} }
+  .finder-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .finder-chip{
+    display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);color:var(--violet);
+    font-weight:700;font-size:13.5px;border-radius:999px;padding:7px 14px;
+  }
+  .finder-note{font-size:13.5px;font-weight:600;color:var(--ink-soft)}
+  .finder-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+  .finder-tab{
+    border:2px solid var(--line);background:var(--surface);border-radius:13px;padding:12px 8px;
+    font:inherit;cursor:pointer;color:var(--ink);text-align:center;min-height:64px;
+    transition:border-color .15s ease,background .15s ease;
+  }
+  .finder-tab .letter{font-family:"Sora",sans-serif;font-weight:800;font-size:22px;display:block;line-height:1}
+  .finder-tab .lbl{font-size:12.5px;font-weight:600;color:var(--ink-soft);display:block;margin-top:4px}
+  .finder-tab:hover{border-color:var(--violet)}
+  .finder-tab.active{border-color:var(--violet);background:var(--surface-2)}
+  .finder-tab.active .letter{color:var(--violet)}
+  .finder-body{margin-top:16px}
+  .finder-body h3{font-size:19px;font-weight:700}
+  .finder-body p{color:var(--ink-soft);font-size:15.5px;margin-top:6px}
+  .finder-body a{font-weight:700;text-decoration:none}
+  .finder-body a:hover{text-decoration:underline}
+
+  /* ---------- strip ---------- */
+  .strip{border-bottom:1px solid var(--line);background:var(--bg)}
+  .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-top:26px;padding-bottom:26px}
+  @media (max-width:820px){ .strip .wrap{grid-template-columns:repeat(2,1fr)} }
+  .strip .item{text-align:center;padding:4px 6px}
+  .strip .big{font-family:"Sora",sans-serif;font-weight:800;font-size:21px;color:var(--violet)}
+  .strip .small{font-size:14px;color:var(--ink-soft);font-weight:600;margin-top:2px}
+
+  /* ---------- level cards ---------- */
+  .levels{display:grid;gap:22px}
+  .level{
+    display:grid;grid-template-columns:120px 1fr;gap:30px;
+    background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px;
+    box-shadow:var(--shadow-sm);
+  }
+  @media (max-width:700px){ .level{grid-template-columns:1fr;gap:18px;padding:26px 22px} }
+  .level .badge{
+    width:104px;height:104px;border-radius:22px;background:var(--surface-2);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  }
+  @media (max-width:700px){ .level .badge{width:84px;height:84px} }
+  .level .badge .big-letter{font-family:"Sora",sans-serif;font-weight:800;font-size:52px;line-height:1;color:var(--violet)}
+  .level .badge .lv{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink)}
+  .level h3{font-size:24px;font-weight:800}
+  .level h3 span{color:var(--violet)}
+  .level .intro{color:var(--ink-soft);margin-top:10px}
+  .level .focus-label{font-family:"Sora",sans-serif;font-weight:700;font-size:15px;margin-top:20px}
+  .level ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:9px}
+  .level ul li{display:flex;gap:11px;align-items:flex-start;font-size:16px}
+  .level ul .tick{
+    width:21px;height:21px;border-radius:50%;background:var(--good-soft);color:var(--good);
+    display:grid;place-items:center;font-size:11.5px;font-weight:800;flex-shrink:0;margin-top:3px;
+  }
+  .level .ideal{
+    margin-top:20px;background:var(--bg-tint);border:1px solid var(--line);border-radius:12px;
+    padding:13px 16px;font-size:15px;color:var(--ink-soft);
+  }
+  .level .ideal strong{color:var(--ink);font-family:"Sora",sans-serif;font-size:14.5px}
+
+  /* ---------- approach ---------- */
+  .approach{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  @media (max-width:960px){ .approach{grid-template-columns:1fr;gap:34px} }
+  .approach img{border-radius:22px;box-shadow:var(--shadow);width:100%;aspect-ratio:1200/776;object-fit:cover}
+  .approach h2{font-size:clamp(27px,3.4vw,38px);font-weight:800}
+  .approach .body{color:var(--ink-soft);margin-top:16px;font-size:17.5px}
+  .formats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+  @media (max-width:520px){ .formats{grid-template-columns:1fr} }
+  .format{
+    display:flex;gap:12px;align-items:flex-start;background:var(--bg-tint);
+    border:1px solid var(--line);border-radius:14px;padding:15px 16px;
+    font-family:"Sora",sans-serif;font-weight:700;font-size:15.5px;line-height:1.35;
+  }
+  .format .tick{
+    width:24px;height:24px;border-radius:50%;background:var(--violet);color:#fff;flex-shrink:0;
+    display:grid;place-items:center;font-size:13px;font-weight:800;
+  }
+  .approach .virtual-note{
+    margin-top:20px;display:inline-flex;align-items:center;gap:9px;
+    background:var(--gold-soft);color:var(--gold-ink);font-weight:700;font-size:14.5px;
+    border-radius:999px;padding:8px 16px;
+  }
+  .approach .goal-line{margin-top:18px;color:var(--ink-soft);font-size:16px}
+
+  /* ---------- covers / cards ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media (max-width:960px){ .cards{grid-template-columns:1fr} }
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px 28px;
+    box-shadow:var(--shadow-sm);transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card .ic{
+    width:48px;height:48px;border-radius:13px;background:var(--surface-2);color:var(--violet);
+    display:grid;place-items:center;margin-bottom:18px;
+  }
+  .card .ic svg{width:25px;height:25px}
+  .card h3{font-size:21px;font-weight:800}
+  .card p{color:var(--ink-soft);margin-top:10px;font-size:16px}
+
+  /* ---------- why choose ---------- */
+  .why{background:var(--bg-tint);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media (max-width:700px){ .why-grid{grid-template-columns:1fr} }
+  .why-item{
+    display:flex;gap:14px;align-items:flex-start;background:var(--surface);
+    border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:16.5px;font-weight:600;
+  }
+  .why-item .tick{
+    width:25px;height:25px;border-radius:50%;background:var(--violet);color:#fff;flex-shrink:0;
+    display:grid;place-items:center;font-size:13px;font-weight:800;margin-top:2px;
+  }
+
+  /* ---------- who ---------- */
+  .who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media (max-width:960px){ .who-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:560px){ .who-grid{grid-template-columns:1fr} }
+  .who-item{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .who-item .ic{
+    width:44px;height:44px;border-radius:12px;background:var(--surface-2);color:var(--violet);
+    display:grid;place-items:center;margin-bottom:14px;
+  }
+  .who-item .ic svg{width:23px;height:23px}
+  .who-item h3{font-size:17.5px;font-weight:700;line-height:1.3}
+  .who-item p{color:var(--ink-soft);font-size:15px;margin-top:6px}
+
+  /* ---------- feedback ---------- */
+  .feedback{background:var(--bg-tint);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:start}
+  @media (max-width:960px){ .shots{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:520px){ .shots{grid-template-columns:1fr} }
+  .shot{
+    background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;
+    box-shadow:var(--shadow-sm);cursor:zoom-in;text-align:left;font:inherit;width:100%;
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .shot:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .shot img{border-radius:10px;width:100%;height:190px;object-fit:cover;object-position:top}
+  .shot .cap{display:block;font-size:13.5px;font-weight:700;color:var(--ink-soft);margin-top:10px;text-align:center}
+  .shot.wide{grid-column:span 2}
+  @media (max-width:520px){ .shot.wide{grid-column:span 1} }
+  .shot.wide img{height:150px}
+
+  /* lightbox */
+  .lightbox{
+    position:fixed;inset:0;z-index:90;background:rgba(28,14,52,.82);
+    display:none;align-items:center;justify-content:center;padding:20px;
+  }
+  .lightbox.open{display:flex}
+  .lightbox figure{margin:0;max-width:min(680px,100%);max-height:100%;display:flex;flex-direction:column;gap:12px}
+  .lightbox img{max-height:calc(100vh - 130px);width:auto;max-width:100%;margin:0 auto;border-radius:12px;background:#fff}
+  .lightbox figcaption{color:#fff;text-align:center;font-weight:600;font-size:15px}
+  .lightbox .close{
+    position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;
+    border:none;background:#fff;color:var(--violet-deep);font-size:22px;font-weight:800;cursor:pointer;
+  }
+
+  /* ---------- goal ---------- */
+  .goal .wrap{max-width:820px;text-align:center}
+  .goal h2{font-size:clamp(27px,3.4vw,38px);font-weight:800}
+  .goal p{color:var(--ink-soft);font-size:19px;margin-top:16px}
+  .goal .mark{
+    width:54px;height:54px;border-radius:50%;background:var(--gold-soft);color:var(--gold-ink);
+    display:grid;place-items:center;margin:0 auto 20px;
+  }
+  .goal .mark svg{width:27px;height:27px}
+
+  /* ---------- sub-page cards ---------- */
+  .subcards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media (max-width:820px){ .subcards{grid-template-columns:1fr} }
+  .subcard{
+    background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px 30px;
+    display:flex;flex-direction:column;box-shadow:var(--shadow-sm);
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .subcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .subcard .tag{
+    align-self:flex-start;font-size:12.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    background:var(--gold-soft);color:var(--gold-ink);border-radius:999px;padding:6px 13px;margin-bottom:18px;
+  }
+  .subcard h3{font-size:24px;font-weight:800}
+  .subcard .desc{color:var(--ink-soft);margin-top:11px;flex:1;font-size:16.5px}
+  .subcard ul{list-style:none;margin:18px 0 24px;padding:0;display:grid;gap:8px}
+  .subcard ul li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px}
+  .subcard ul .tick{
+    width:20px;height:20px;border-radius:50%;background:var(--good-soft);color:var(--good);
+    display:grid;place-items:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:3px;
+  }
+  .subcard .btn{align-self:flex-start}
+
+  /* ---------- final CTA ---------- */
+  .final{background:var(--bg-tint);border-top:1px solid var(--line)}
+  .final .wrap{text-align:center;max-width:820px}
+  .final h2{font-size:clamp(30px,4.4vw,46px);font-weight:800}
+  .final p{color:var(--ink-soft);font-size:18.5px;margin:16px auto 32px;max-width:620px}
+  .final .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .final .free-note{margin-top:22px;font-size:14.5px;color:var(--ink-soft);font-weight:600}
+
+  /* ---------- footer ---------- */
+  footer.site{background:var(--bg-tint);border-top:1px solid var(--line);padding:56px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px}
+  @media (max-width:820px){ .foot-grid{grid-template-columns:1fr} }
+  footer.site h4{font-family:"Sora",sans-serif;font-size:15px;font-weight:700;margin:0 0 14px;letter-spacing:.02em}
+  footer.site ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  footer.site a{color:var(--ink-soft);text-decoration:none;font-size:15.5px}
+  footer.site a:hover{color:var(--violet)}
+  footer.site .contact li{color:var(--ink-soft);font-size:15.5px}
+  footer.site .blurb{color:var(--ink-soft);font-size:15.5px;margin-top:12px;max-width:340px}
+  .foot-base{
+    margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    font-size:13.5px;color:var(--ink-soft);
+  }
+
+  /* ---------- mobile action bar ---------- */
+  .mobilebar{
+    display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+    background:var(--surface);border-top:1px solid var(--line);
+    box-shadow:0 -6px 18px rgba(46,25,84,.08);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .mobilebar a{
+    flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+    color:var(--violet);text-decoration:none;font-size:12.5px;font-weight:700;padding:11px 4px 9px;
+  }
+  .mobilebar svg{width:21px;height:21px}
+  @media (max-width:720px){
+    .mobilebar{display:flex}
+    body{padding-bottom:64px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important}
+  }
+  /* ---------- mobile menu ---------- */
+  .menu-btn{display:none}
+  .mobile-menu{display:none}
+  @media (max-width:900px){
+    .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-size:24px;font-weight:700;cursor:pointer;flex-shrink:0;margin-left:12px}
+    header.menu-open .mobile-menu{display:flex;flex-direction:column;gap:2px;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm);padding:10px 20px 16px;z-index:60}
+    header.site .mobile-menu a{padding:11px 4px;font-weight:700;color:var(--ink);text-decoration:none;border-radius:8px}
+    header.site .mobile-menu a.btn-gold{display:block;margin-left:0;margin-top:8px;text-align:center}
+  }
+  @media (min-width:901px){.mobile-menu{display:none !important}}
+
+nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+  
+  html[lang="en"] .t-fr{display:none}
+  html[lang="fr"] .t-en{display:none}
+</style>
+<style>
+  .shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media (max-width:960px){.shop-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:600px){.shop-grid{grid-template-columns:1fr}}
+  .shop-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 26px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;scroll-margin-top:90px}
+  .shop-card h3{font-size:20px;font-weight:800}
+  .shop-card .detail{color:var(--ink-soft);margin-top:10px;font-size:15.5px;flex:1}
+  .shop-card .price{font-family:"Sora",sans-serif;font-weight:800;font-size:26px;color:var(--violet);margin-top:auto;padding-top:18px}
+  .shop-card .btn{margin-top:18px;align-self:flex-start}
+  .cta-band{background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+  .cta-band h2{font-size:clamp(28px,3.6vw,40px);font-weight:800}
+  .cta-band .hero-ctas{justify-content:center}
+</style>
+<style>
+  .cart-btn{display:inline-flex;align-items:center;gap:8px;align-self:center;position:relative;background:var(--surface);color:var(--violet);border:2px solid var(--violet);border-radius:12px;padding:11px 16px;font-family:"Sora",sans-serif;font-weight:700;font-size:15px;cursor:pointer;flex-shrink:0;text-decoration:none}
+  .cart-btn svg{width:20px;height:20px}
+  .cart-count{display:none;min-width:22px;height:22px;border-radius:11px;background:var(--gold);color:#3A2A00;font-size:13px;font-weight:800;align-items:center;justify-content:center;padding:0 5px}
+  .cart-count.show{display:inline-flex}
+  .shop-actions{display:flex;gap:10px;margin-top:18px;align-self:flex-start;align-items:stretch}
+  .shop-actions .btn{margin-top:0}
+  .wish-btn{min-width:52px;border-radius:12px;border:2px solid var(--violet);background:var(--violet);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0 12px}
+  .wish-btn.saved{background:var(--gold);border-color:var(--gold);color:#3A2A00}
+  @media (max-width:520px){ header.site .wrap{gap:12px} .cart-btn{padding:10px 12px;font-size:14px} }
+
+
+  .page-cart-list{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+  .page-cart-row{border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center}
+  .page-cart-name{font-weight:800;font-size:18px;flex:1 1 220px}
+  .page-cart-name a{color:inherit;text-decoration:none}
+  .page-qty-label{font-weight:700;font-size:15px;color:var(--ink-soft)}
+  .page-qty{font-family:inherit;font-size:16px;font-weight:700;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;cursor:pointer;margin-left:6px}
+  .page-remove{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:20px;font-weight:700;cursor:pointer;flex-shrink:0}
+  .page-line-price{font-weight:800;color:var(--violet);margin-left:auto}
+  .page-total{display:flex;justify-content:space-between;align-items:center;font-size:20px;font-weight:800;margin:24px 0;padding-top:20px;border-top:1px solid var(--line)}
+  .page-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin:24px 0}
+  .page-continue{font-weight:700}
+  .pay-badges{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 12px}
+  .pay-badge{display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);padding:8px 14px;font-family:"Sora",sans-serif;font-weight:800;font-size:14px;color:var(--ink);letter-spacing:.02em}
+  .page-note{font-size:14px;color:var(--ink-soft);margin-bottom:8px}
+  .page-cart-empty{color:var(--ink-soft);margin-bottom:16px}
+  .wish-list{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+  .wish-row{border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center}
+  .wish-row .price{font-weight:800;color:var(--violet);margin:0}
+  .wish-remove{margin-left:auto;background:none;border:none;color:var(--violet);font-weight:700;font-size:14px;cursor:pointer;padding:6px 2px}
+  .shop-card h3 a{color:inherit;text-decoration:none}
+
+</style>
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <span class="loc"><span class="t-en">Surrey, BC. Courses online, in person &amp; hybrid, across Canada</span><span class="t-fr">Surrey, BC. Cours en ligne, en personne et hybrides, partout au Canada</span></span>
+    <span class="right">
+      <span class="hours"><span class="t-en">Monday to Saturday, 9 a.m. to 5 p.m.</span><span class="t-fr">Lundi à samedi, 9 h à 17 h</span></span>
+    </span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="wordmark" href="index.html" aria-label="Verbal Link Institute home" data-label-fr="Accueil Verbal Link Institute">
+      <span class="name">Verbal <em>Link</em></span>
+      <span class="sub">Institute</span>
+    </a>
+    <nav class="main" aria-label="Main navigation" data-label-fr="Navigation principale">
+      <a href="index.html"><span class="t-en">Home</span><span class="t-fr">Accueil</span></a>
+      <a href="government.html"><span class="t-en">Government</span><span class="t-fr">Gouvernement</span></a>
+      <a href="about.html"><span class="t-en">About us</span><span class="t-fr">À propos</span></a>
+    </nav>
+    <a class="btn btn-gold" href="book-a-consultation.html"><span class="t-en">Book a free consultation</span><span class="t-fr">Réservez une consultation gratuite</span></a>
+    <a class="cart-btn" href="cart.html" aria-label="View cart" data-label-fr="Voir le panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M3 3h2l2.4 12.4A2 2 0 0 0 9.4 17H18a2 2 0 0 0 2-1.6L21.5 8H6"/></svg><span class="t-en">Cart</span><span class="t-fr">Panier</span><span class="cart-count" id="cartCount">0</span></a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">⋮</button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Menu">
+    <a href="index.html"><span class="t-en">Home</span><span class="t-fr">Accueil</span></a>
+    <a href="government.html"><span class="t-en">Government</span><span class="t-fr">Gouvernement</span></a>
+    <a href="about.html"><span class="t-en">About us</span><span class="t-fr">À propos</span></a>
+    <a class="btn btn-gold" href="book-a-consultation.html"><span class="t-en">Book a free consultation</span><span class="t-fr">Réservez une consultation gratuite</span></a>
+  </nav>
+</header>
+
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">Verbal Link Institute</span>
+    <h1><span class="t-en">Cart</span><span class="t-fr">Panier</span></h1>
+    <p class="lede"><span class="t-en">Review your items below, then go to checkout.</span><span class="t-fr">Vérifiez vos articles ci-dessous, puis passez à la caisse.</span></p>
+  </div>
+</section>
+
+<!-- ================= CART ================= -->
+<section>
+  <div class="wrap">
+    <p class="page-cart-empty" id="pageCartEmpty"><span class="t-en">Your cart is empty.</span><span class="t-fr">Votre panier est vide.</span></p>
+    <ul class="page-cart-list" id="pageCartItems"></ul>
+    <div class="page-total" id="pageCartTotalRow"><span><span class="t-en">Total amount</span><span class="t-fr">Montant total</span></span> <strong id="pageCartTotal"></strong></div>
+    <div class="page-actions">
+      <a class="page-continue" href="shop.html"><span class="t-en">« Continue shopping</span><span class="t-fr">« Continuer mes achats</span></a>
+      <a class="btn btn-violet" id="pageCheckoutBtn" href="#"><span class="t-en">Go to checkout</span><span class="t-fr">Passer à la caisse</span></a>
+    </div>
+    <div class="pay-badges" aria-label="Accepted payment methods" data-label-fr="Moyens de paiement acceptés">
+      <span class="pay-badge">VISA</span><span class="pay-badge">Mastercard</span><span class="pay-badge">American Express</span><span class="pay-badge">Interac</span>
+    </div>
+    <p class="page-note"><span class="t-en">Checkout is by email for now. Online payment will be added later.</span><span class="t-fr">La commande se fait par courriel pour l’instant. Le paiement en ligne sera ajouté plus tard.</span></p>
+  </div>
+</section>
+
+<!-- ================= RELATED ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="t-en">Also have a look at</span><span class="t-fr">À découvrir aussi</span></h2>
+    </div>
+    <div class="shop-grid">
+      <article class="shop-card">
+        <h3><a href="shop.html#assessment-fees"><span class="t-en">Assessment fees</span><span class="t-fr">Frais d’évaluation</span></a></h3>
+        <p class="price"><span class="t-en">$105.58</span><span class="t-fr">105,58 $</span></p>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="assessment-fees" data-name-en="Assessment fees" data-name-fr="Frais d’évaluation" data-price-cents="10558"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="assessment-fees" data-name-en="Assessment fees" data-name-fr="Frais d’évaluation" data-price-cents="10558" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
+      </article>
+      <article class="shop-card">
+        <h3><a href="shop.html#french-classes-kids"><span class="t-en">French Classes for Kids (Home & Online Service)</span><span class="t-fr">Cours de français pour enfants (service à domicile et en ligne)</span></a></h3>
+  <p class="detail"><span class="t-en">Ages 5 to 14, at home and online</span><span class="t-fr">De 5 à 14 ans, à domicile et en ligne</span></p>
+        <p class="price"><span class="t-en">$450.00</span><span class="t-fr">450,00 $</span></p>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="french-classes-kids" data-name-en="French Classes for Kids (Home &amp; Online Service)" data-name-fr="Cours de français pour enfants (service à domicile et en ligne)" data-price-cents="45000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="french-classes-kids" data-name-en="French Classes for Kids (Home &amp; Online Service)" data-name-fr="Cours de français pour enfants (service à domicile et en ligne)" data-price-cents="45000" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
+      </article>
+      <article class="shop-card">
+        <h3><a href="shop.html#french-exam-a1-a2"><span class="t-en">French exam Preparation (80 hours) A1-A2</span><span class="t-fr">Préparation à l’examen de français (80 heures) A1-A2</span></a></h3>
+        <p class="price"><span class="t-en">$535.00</span><span class="t-fr">535,00 $</span></p>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="french-exam-a1-a2" data-name-en="French exam Preparation (80 hours) A1-A2" data-name-fr="Préparation à l’examen de français (80 heures) A1-A2" data-price-cents="53500"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="french-exam-a1-a2" data-name-en="French exam Preparation (80 hours) A1-A2" data-name-fr="Préparation à l’examen de français (80 heures) A1-A2" data-price-cents="53500" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
+      </article>
+      <article class="shop-card">
+        <h3><a href="shop.html#french-exam-public-servants"><span class="t-en">French Exam Preparation for Public Servants</span><span class="t-fr">Préparation à l’examen de français pour fonctionnaires</span></a></h3>
+        <p class="price"><span class="t-en">$690.00</span><span class="t-fr">690,00 $</span></p>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="french-exam-public-servants" data-name-en="French Exam Preparation for Public Servants" data-name-fr="Préparation à l’examen de français pour fonctionnaires" data-price-cents="69000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="french-exam-public-servants" data-name-en="French Exam Preparation for Public Servants" data-name-fr="Préparation à l’examen de français pour fonctionnaires" data-price-cents="69000" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WISHLIST ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="t-en">Wishlist</span><span class="t-fr">Liste de souhaits</span></h2>
+    </div>
+    <p class="page-cart-empty" id="pageWishEmpty"><span class="t-en">No saved items yet.</span><span class="t-fr">Aucun article sauvegardé pour le moment.</span></p>
+    <ul class="wish-list" id="pageWishItems"></ul>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site" id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="wordmark" href="#top" aria-label="Verbal Link Institute back to top" data-label-fr="Verbal Link Institute, retour en haut">
+          <span class="name">Verbal <em>Link</em></span>
+          <span class="sub">Institute</span>
+        </a>
+        <p class="blurb"><span class="t-en">Your link to French language success. French training and exam preparation based in British Columbia, serving learners across Canada.</span><span class="t-fr">Votre lien vers la réussite en français. Formation en français et préparation aux examens en Colombie-Britannique, au service des apprenants partout au Canada.</span></p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="contact">
+          <li>10136 King George Blvd, Surrey, BC</li>
+          <li><a href="tel:+17788029927">+1 778 802 9927</a></li>
+          <li><a href="mailto:admin@verballinkinstitute.ca">admin@verballinkinstitute.ca</a></li>
+          <li><span class="t-en">Monday to Saturday, 9 a.m. to 5 p.m.</span><span class="t-fr">Lundi à samedi, 9 h à 17 h</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4><span class="t-en">Quick links</span><span class="t-fr">Liens rapides</span></h4>
+        <ul>
+          <li><a href="government.html"><span class="t-en">Government training</span><span class="t-fr">Formation pour le gouvernement</span></a></li>
+          <li><a href="https://www.verballinkinstitute.ca/government/public-language-training-plf2"><span class="t-en">PLF2 training</span><span class="t-fr">Formation PLF2</span></a></li>
+          <li><a href="https://www.verballinkinstitute.ca/government/second-language-evaluation-sle-preparation"><span class="t-en">SLE preparation</span><span class="t-fr">Préparation au SLE</span></a></li>
+          <li><a href="placement-test.html"><span class="t-en">Free placement test</span><span class="t-fr">Test de placement gratuit</span></a></li>
+          <li><a href="registration.html"><span class="t-en">Registration</span><span class="t-fr">Inscription</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 Verbal Link Institute. Cart page redesign mockup.</span>
+      <span><a href="https://www.verballinkinstitute.ca/privacy-policy"><span class="t-en">Privacy policy</span><span class="t-fr">Politique de confidentialité</span></a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE ACTION BAR ================= -->
+<nav class="mobilebar" aria-label="Quick contact" data-label-fr="Contact rapide">
+  <a href="mailto:admin@verballinkinstitute.ca">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+    <span class="t-en">Email</span><span class="t-fr">Courriel</span>
+  </a>
+  <a href="tel:+17788029927">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+    <span class="t-en">Phone</span><span class="t-fr">Téléphone</span>
+  </a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=10136+King+George+Blvd+Surrey+BC" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+    <span class="t-en">Map</span><span class="t-fr">Carte</span>
+  </a>
+</nav>
+
+
+
+<script>
+(function(){
+  var header = document.querySelector('header.site');
+  var btn = header ? header.querySelector('.menu-btn') : null;
+  var menu = header ? header.querySelector('.mobile-menu') : null;
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = header.classList.toggle('menu-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      header.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if (!header.contains(e.target)){
+      header.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+<script>(function(){var l='en';try{l=localStorage.getItem('vl-lang')||'en';}catch(e){}if(l!=='fr'){l='en';}document.documentElement.lang=l;if(l==='fr'){document.title='Panier | Verbal Link Institute';document.querySelectorAll('[data-label-fr]').forEach(function(el){el.setAttribute('aria-label',el.getAttribute('data-label-fr'));});document.querySelectorAll('[data-alt-fr]').forEach(function(el){el.setAttribute('alt',el.getAttribute('data-alt-fr'));});}else{document.title='Cart | Verbal Link Institute';}})();</script>
+<script>
+(function(){
+  var CARTKEY = "vl-cart";
+  var WISHKEY = "vl-wishlist";
+  var ADMIN = "admin@verballinkinstitute.ca";
+  function lang(){ try { return localStorage.getItem("vl-lang") === "fr" ? "fr" : "en"; } catch (e) { return "en"; } }
+  function fmtEN(cents){ return "$" + (cents / 100).toFixed(2); }
+  function fmtFR(cents){ return (cents / 100).toFixed(2).replace(".", ",") + " $"; }
+  function esc(v){ return String(v).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  var catalog = {};
+  document.querySelectorAll(".add-to-cart").forEach(function(b){
+    catalog[b.getAttribute("data-id")] = { nameEn: b.getAttribute("data-name-en"), nameFr: b.getAttribute("data-name-fr"), cents: parseInt(b.getAttribute("data-price-cents"), 10) };
+  });
+  function loadCart(){
+    var cart = {};
+    try {
+      var raw = localStorage.getItem(CARTKEY);
+      if (raw) {
+        var data = JSON.parse(raw);
+        Object.keys(data).forEach(function(id){
+          if (data[id] && data[id].qty > 0) { cart[id] = { nameEn: data[id].nameEn, nameFr: data[id].nameFr, cents: data[id].cents, qty: Math.floor(data[id].qty) }; }
+        });
+      }
+    } catch (e) {}
+    return cart;
+  }
+  function saveCart(cart){ try { localStorage.setItem(CARTKEY, JSON.stringify(cart)); } catch (e) {} }
+  function loadWish(){
+    var w = {};
+    try {
+      var raw = localStorage.getItem(WISHKEY);
+      if (raw) {
+        var data = JSON.parse(raw);
+        Object.keys(data).forEach(function(id){
+          if (data[id]) { w[id] = { nameEn: data[id].nameEn, nameFr: data[id].nameFr, cents: data[id].cents }; }
+        });
+      }
+    } catch (e) {}
+    return w;
+  }
+  function saveWish(w){ try { localStorage.setItem(WISHKEY, JSON.stringify(w)); } catch (e) {} }
+  function cartCount(cart){ var n = 0; Object.keys(cart).forEach(function(id){ n += cart[id].qty; }); return n; }
+  function cartTotal(cart){ var t = 0; Object.keys(cart).forEach(function(id){ t += cart[id].qty * cart[id].cents; }); return t; }
+  function buildCheckoutHref(cart){
+    var en = ["I would like to order:"];
+    var fr = ["Je souhaite commander :"];
+    Object.keys(cart).forEach(function(id){
+      var it = cart[id];
+      en.push(it.qty + " x " + it.nameEn + " (" + fmtEN(it.qty * it.cents) + ")");
+      fr.push(it.qty + " x " + it.nameFr + " (" + fmtFR(it.qty * it.cents) + ")");
+    });
+    en.push("Total: " + fmtEN(cartTotal(cart)));
+    fr.push("Total : " + fmtFR(cartTotal(cart)));
+    var subject = "Order / Commande - Verbal Link Institute Shop";
+    var body = en.join("\n") + "\n\n" + fr.join("\n");
+    return "mailto:" + ADMIN + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  }
+  var itemsEl = document.getElementById("pageCartItems");
+  var emptyEl = document.getElementById("pageCartEmpty");
+  var totalRow = document.getElementById("pageCartTotalRow");
+  var totalEl = document.getElementById("pageCartTotal");
+  var checkoutEl = document.getElementById("pageCheckoutBtn");
+  var countEl = document.getElementById("cartCount");
+  var wishEl = document.getElementById("pageWishItems");
+  var wishEmptyEl = document.getElementById("pageWishEmpty");
+  function updateBadge(){
+    var c = cartCount(loadCart());
+    countEl.textContent = String(c);
+    if (c > 0) { countEl.classList.add("show"); } else { countEl.classList.remove("show"); }
+  }
+  function qtyOptions(selected){
+    var html = "";
+    for (var q = 1; q <= 10; q++) { html += '<option value="' + q + '"' + (q === selected ? ' selected' : '') + '>' + q + '</option>'; }
+    return html;
+  }
+  function renderCart(){
+    var cart = loadCart();
+    var ids = Object.keys(cart);
+    var total = cartTotal(cart);
+    updateBadge();
+    if (ids.length === 0) {
+      itemsEl.innerHTML = "";
+      emptyEl.style.display = "block";
+      totalRow.style.display = "none";
+      checkoutEl.style.display = "none";
+      checkoutEl.setAttribute("href", "#");
+      return;
+    }
+    emptyEl.style.display = "none";
+    totalRow.style.display = "flex";
+    checkoutEl.style.display = "";
+    var html = "";
+    ids.forEach(function(id){
+      var it = cart[id];
+      var line = it.qty * it.cents;
+      var qtyLabel = lang() === "fr" ? "Quantité" : "Quantity";
+      var remLabel = lang() === "fr" ? "Retirer du panier" : "Remove from cart";
+      html += '<li class="page-cart-row">';
+      html += '<div class="page-cart-name"><a href="shop.html#' + esc(id) + '"><span class="t-en">' + esc(it.nameEn) + '</span><span class="t-fr">' + esc(it.nameFr) + '</span></a></div>';
+      html += '<label class="page-qty-label"><span class="t-en">Quantity</span><span class="t-fr">Quantité</span> <select class="page-qty" data-id="' + esc(id) + '" aria-label="' + qtyLabel + '">' + qtyOptions(it.qty) + '</select></label>';
+      html += '<button type="button" class="page-remove" data-id="' + esc(id) + '" aria-label="' + remLabel + '">\u00d7</button>';
+      html += '<div class="page-line-price"><span class="t-en">' + fmtEN(line) + '</span><span class="t-fr">' + fmtFR(line) + '</span></div>';
+      html += '</li>';
+    });
+    itemsEl.innerHTML = html;
+    totalEl.innerHTML = '<span class="t-en">' + fmtEN(total) + '</span><span class="t-fr">' + fmtFR(total) + '</span>';
+    checkoutEl.setAttribute("href", buildCheckoutHref(cart));
+  }
+  function renderWish(){
+    var w = loadWish();
+    var ids = Object.keys(w);
+    if (ids.length === 0) { wishEl.innerHTML = ""; wishEmptyEl.style.display = "block"; return; }
+    wishEmptyEl.style.display = "none";
+    var html = "";
+    ids.forEach(function(id){
+      var it = w[id];
+      var remLabel = lang() === "fr" ? "Retirer de la liste de souhaits" : "Remove from wishlist";
+      html += '<li class="wish-row">';
+      html += '<div class="page-cart-name"><a href="shop.html#' + esc(id) + '"><span class="t-en">' + esc(it.nameEn) + '</span><span class="t-fr">' + esc(it.nameFr) + '</span></a></div>';
+      html += '<p class="price"><span class="t-en">' + fmtEN(it.cents) + '</span><span class="t-fr">' + fmtFR(it.cents) + '</span></p>';
+      html += '<button class="btn btn-violet add-to-cart" type="button" data-id="' + esc(id) + '" data-name-en="' + esc(it.nameEn) + '" data-name-fr="' + esc(it.nameFr) + '" data-price-cents="' + it.cents + '"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>';
+      html += '<button type="button" class="wish-remove" data-id="' + esc(id) + '" aria-label="' + remLabel + '"><span class="t-en">Remove</span><span class="t-fr">Retirer</span></button>';
+      html += '</li>';
+    });
+    wishEl.innerHTML = html;
+    bindAddButtons(wishEl);
+  }
+  function refreshWishUI(){
+    var w = loadWish();
+    document.querySelectorAll(".wish-btn").forEach(function(b){
+      var id = b.getAttribute("data-id");
+      if (w[id]) { b.classList.add("saved"); b.textContent = "\u2665"; }
+      else { b.classList.remove("saved"); b.textContent = "\u2661"; }
+    });
+  }
+  function bindAddButtons(root){
+    root.querySelectorAll(".add-to-cart").forEach(function(b){
+      if (b.getAttribute("data-bound")) { return; }
+      b.setAttribute("data-bound", "1");
+      b.addEventListener("click", function(){
+        var id = b.getAttribute("data-id");
+        var cart = loadCart();
+        if (!cart[id]) { cart[id] = { nameEn: b.getAttribute("data-name-en"), nameFr: b.getAttribute("data-name-fr"), cents: parseInt(b.getAttribute("data-price-cents"), 10), qty: 0 }; }
+        cart[id].qty += 1;
+        saveCart(cart);
+        renderCart();
+      });
+    });
+  }
+  itemsEl.addEventListener("change", function(e){
+    var sel = e.target.closest("select.page-qty");
+    if (!sel) { return; }
+    var id = sel.getAttribute("data-id");
+    var cart = loadCart();
+    if (!cart[id]) { return; }
+    cart[id].qty = parseInt(sel.value, 10);
+    saveCart(cart);
+    renderCart();
+  });
+  itemsEl.addEventListener("click", function(e){
+    var btn = e.target.closest("button.page-remove");
+    if (!btn) { return; }
+    var cart = loadCart();
+    delete cart[btn.getAttribute("data-id")];
+    saveCart(cart);
+    renderCart();
+  });
+  wishEl.addEventListener("click", function(e){
+    var btn = e.target.closest("button.wish-remove");
+    if (!btn) { return; }
+    var w = loadWish();
+    delete w[btn.getAttribute("data-id")];
+    saveWish(w);
+    renderWish();
+    refreshWishUI();
+  });
+  document.querySelectorAll(".wish-btn").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id = b.getAttribute("data-id");
+      var w = loadWish();
+      if (w[id]) { delete w[id]; }
+      else { w[id] = { nameEn: b.getAttribute("data-name-en"), nameFr: b.getAttribute("data-name-fr"), cents: parseInt(b.getAttribute("data-price-cents"), 10) }; }
+      saveWish(w);
+      renderWish();
+      refreshWishUI();
+    });
+  });
+  bindAddButtons(document);
+  renderCart();
+  renderWish();
+  refreshWishUI();
+})();
+
+</script>
+</body>
+</html>

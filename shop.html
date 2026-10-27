@@ -387,32 +387,16 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   .cta-band .hero-ctas{justify-content:center}
 </style>
 <style>
-  .cart-btn{display:inline-flex;align-items:center;gap:8px;align-self:center;position:relative;background:var(--surface);color:var(--violet);border:2px solid var(--violet);border-radius:12px;padding:11px 16px;font-family:"Sora",sans-serif;font-weight:700;font-size:15px;cursor:pointer;flex-shrink:0}
+  .cart-btn{display:inline-flex;align-items:center;gap:8px;align-self:center;position:relative;background:var(--surface);color:var(--violet);border:2px solid var(--violet);border-radius:12px;padding:11px 16px;font-family:"Sora",sans-serif;font-weight:700;font-size:15px;cursor:pointer;flex-shrink:0;text-decoration:none}
   .cart-btn svg{width:20px;height:20px}
   .cart-count{display:none;min-width:22px;height:22px;border-radius:11px;background:var(--gold);color:#3A2A00;font-size:13px;font-weight:800;align-items:center;justify-content:center;padding:0 5px}
   .cart-count.show{display:inline-flex}
-  .cart-overlay{position:fixed;inset:0;background:rgba(28,14,52,.5);z-index:80;display:none}
-  .cart-overlay.open{display:block}
-  .cart-panel{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);z-index:90;box-shadow:var(--shadow);display:none;flex-direction:column}
-  .cart-panel.open{display:flex}
-  .cart-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 22px;border-bottom:1px solid var(--line)}
-  .cart-panel-head h2{font-size:22px;font-weight:800}
-  .cart-close{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:22px;font-weight:700;cursor:pointer;flex-shrink:0}
-  .cart-empty{padding:24px 22px;color:var(--ink-soft)}
-  .cart-items{list-style:none;margin:0;padding:18px 22px;overflow-y:auto;flex:1;display:grid;gap:14px;align-content:start}
-  .cart-item{border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:10px}
-  .cart-item-name{font-size:16px}
-  .cart-item-unit{font-size:14px;color:var(--ink-soft);margin-top:2px}
-  .cart-item-controls{display:flex;gap:8px;align-items:center}
-  .qty-btn{width:32px;height:32px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font-size:18px;font-weight:700;cursor:pointer}
-  .qty{font-weight:700;min-width:24px;text-align:center}
-  .cart-remove{margin-left:auto;background:none;border:none;color:var(--violet);font-weight:700;font-size:14px;cursor:pointer;padding:6px 2px}
-  .cart-item-total{font-weight:800;color:var(--violet)}
-  .cart-foot{border-top:1px solid var(--line);padding:20px 22px}
-  .cart-total{display:flex;justify-content:space-between;align-items:center;font-size:18px;font-weight:800;margin-bottom:12px}
-  .cart-note{font-size:14px;color:var(--ink-soft);margin-bottom:16px}
-  .cart-foot .btn{width:100%}
+  .shop-actions{display:flex;gap:10px;margin-top:18px;align-self:flex-start;align-items:stretch}
+  .shop-actions .btn{margin-top:0}
+  .wish-btn{min-width:52px;border-radius:12px;border:2px solid var(--violet);background:var(--violet);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0 12px}
+  .wish-btn.saved{background:var(--gold);border-color:var(--gold);color:#3A2A00}
   @media (max-width:520px){ header.site .wrap{gap:12px} .cart-btn{padding:10px 12px;font-size:14px} }
+
 </style>
 </head>
 <body>
@@ -438,7 +422,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
       <a href="about.html"><span class="t-en">About us</span><span class="t-fr">À propos</span></a>
     </nav>
     <a class="btn btn-gold" href="book-a-consultation.html"><span class="t-en">Book a free consultation</span><span class="t-fr">Réservez une consultation gratuite</span></a>
-    <button class="cart-btn" type="button" id="cartOpenBtn" aria-label="Open cart" data-label-fr="Ouvrir le panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M3 3h2l2.4 12.4A2 2 0 0 0 9.4 17H18a2 2 0 0 0 2-1.6L21.5 8H6"/></svg><span class="t-en">Cart</span><span class="t-fr">Panier</span><span class="cart-count" id="cartCount">0</span></button>
+    <a class="cart-btn" href="cart.html" aria-label="View cart" data-label-fr="Voir le panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M3 3h2l2.4 12.4A2 2 0 0 0 9.4 17H18a2 2 0 0 0 2-1.6L21.5 8H6"/></svg><span class="t-en">Cart</span><span class="t-fr">Panier</span><span class="cart-count" id="cartCount">0</span></a>
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">⋮</button>
   </div>
   <nav class="mobile-menu" id="mobileMenu" aria-label="Menu">
@@ -472,49 +456,49 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
       <article class="shop-card" id="assessment-fees">
         <h3><span class="t-en">Assessment fees</span><span class="t-fr">Frais d’évaluation</span></h3>
         <p class="price"><span class="t-en">$105.58</span><span class="t-fr">105,58 $</span></p>
-        <button class="btn btn-violet add-to-cart" type="button" data-id="assessment-fees" data-name-en="Assessment fees" data-name-fr="Frais d’évaluation" data-price-cents="10558"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="assessment-fees" data-name-en="Assessment fees" data-name-fr="Frais d’évaluation" data-price-cents="10558"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="assessment-fees" data-name-en="Assessment fees" data-name-fr="Frais d’évaluation" data-price-cents="10558" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card" id="french-classes-kids">
         <h3><span class="t-en">French Classes for Kids (Home & Online Service)</span><span class="t-fr">Cours de français pour enfants (service à domicile et en ligne)</span></h3>
   <p class="detail"><span class="t-en">Ages 5 to 14, at home and online</span><span class="t-fr">De 5 à 14 ans, à domicile et en ligne</span></p>
         <p class="price"><span class="t-en">$450.00</span><span class="t-fr">450,00 $</span></p>
-        <button class="btn btn-violet add-to-cart" type="button" data-id="french-classes-kids" data-name-en="French Classes for Kids (Home &amp; Online Service)" data-name-fr="Cours de français pour enfants (service à domicile et en ligne)" data-price-cents="45000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="french-classes-kids" data-name-en="French Classes for Kids (Home &amp; Online Service)" data-name-fr="Cours de français pour enfants (service à domicile et en ligne)" data-price-cents="45000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="french-classes-kids" data-name-en="French Classes for Kids (Home &amp; Online Service)" data-name-fr="Cours de français pour enfants (service à domicile et en ligne)" data-price-cents="45000" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card" id="french-exam-a1-a2">
         <h3><span class="t-en">French exam Preparation (80 hours) A1-A2</span><span class="t-fr">Préparation à l’examen de français (80 heures) A1-A2</span></h3>
         <p class="price"><span class="t-en">$535.00</span><span class="t-fr">535,00 $</span></p>
-        <button class="btn btn-violet add-to-cart" type="button" data-id="french-exam-a1-a2" data-name-en="French exam Preparation (80 hours) A1-A2" data-name-fr="Préparation à l’examen de français (80 heures) A1-A2" data-price-cents="53500"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="french-exam-a1-a2" data-name-en="French exam Preparation (80 hours) A1-A2" data-name-fr="Préparation à l’examen de français (80 heures) A1-A2" data-price-cents="53500"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="french-exam-a1-a2" data-name-en="French exam Preparation (80 hours) A1-A2" data-name-fr="Préparation à l’examen de français (80 heures) A1-A2" data-price-cents="53500" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card" id="french-exam-public-servants">
         <h3><span class="t-en">French Exam Preparation for Public Servants</span><span class="t-fr">Préparation à l’examen de français pour fonctionnaires</span></h3>
         <p class="price"><span class="t-en">$690.00</span><span class="t-fr">690,00 $</span></p>
-        <button class="btn btn-violet add-to-cart" type="button" data-id="french-exam-public-servants" data-name-en="French Exam Preparation for Public Servants" data-name-fr="Préparation à l’examen de français pour fonctionnaires" data-price-cents="69000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="french-exam-public-servants" data-name-en="French Exam Preparation for Public Servants" data-name-fr="Préparation à l’examen de français pour fonctionnaires" data-price-cents="69000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="french-exam-public-servants" data-name-en="French Exam Preparation for Public Servants" data-name-fr="Préparation à l’examen de français pour fonctionnaires" data-price-cents="69000" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card" id="immigration-guidance">
         <h3><span class="t-en">Immigration guidance instalment</span><span class="t-fr">Accompagnement en immigration (versement)</span></h3>
         <p class="price"><span class="t-en">$500.00</span><span class="t-fr">500,00 $</span></p>
-        <button class="btn btn-violet add-to-cart" type="button" data-id="immigration-guidance" data-name-en="Immigration guidance instalment" data-name-fr="Accompagnement en immigration (versement)" data-price-cents="50000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="immigration-guidance" data-name-en="Immigration guidance instalment" data-name-fr="Accompagnement en immigration (versement)" data-price-cents="50000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="immigration-guidance" data-name-en="Immigration guidance instalment" data-name-fr="Accompagnement en immigration (versement)" data-price-cents="50000" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card" id="nursing-relocation">
         <h3><span class="t-en">Nursing Relocation Support (Installement)</span><span class="t-fr">Soutien à la relocalisation des infirmiers (Installement)</span></h3>
         <p class="price"><span class="t-en">$862.25</span><span class="t-fr">862,25 $</span></p>
-        <button class="btn btn-violet add-to-cart" type="button" data-id="nursing-relocation" data-name-en="Nursing Relocation Support (Installement)" data-name-fr="Soutien à la relocalisation des infirmiers (Installement)" data-price-cents="86225"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="nursing-relocation" data-name-en="Nursing Relocation Support (Installement)" data-name-fr="Soutien à la relocalisation des infirmiers (Installement)" data-price-cents="86225"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="nursing-relocation" data-name-en="Nursing Relocation Support (Installement)" data-name-fr="Soutien à la relocalisation des infirmiers (Installement)" data-price-cents="86225" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card" id="tcf-tef-b1-b2-oral">
         <h3><span class="t-en">TCF/TEF Exam Preparation B1-B2 (oral)</span><span class="t-fr">Préparation à l’examen TCF/TEF B1-B2 (oral)</span></h3>
   <p class="detail"><span class="t-en">Intensive, 8 weeks, 2 sessions per week</span><span class="t-fr">Intensif, 8 semaines, 2 sessions par semaine</span></p>
         <p class="price"><span class="t-en">$495.00</span><span class="t-fr">495,00 $</span></p>
-        <button class="btn btn-violet add-to-cart" type="button" data-id="tcf-tef-b1-b2-oral" data-name-en="TCF/TEF Exam Preparation B1-B2 (oral)" data-name-fr="Préparation à l’examen TCF/TEF B1-B2 (oral)" data-price-cents="49500"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="tcf-tef-b1-b2-oral" data-name-en="TCF/TEF Exam Preparation B1-B2 (oral)" data-name-fr="Préparation à l’examen TCF/TEF B1-B2 (oral)" data-price-cents="49500"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="tcf-tef-b1-b2-oral" data-name-en="TCF/TEF Exam Preparation B1-B2 (oral)" data-name-fr="Préparation à l’examen TCF/TEF B1-B2 (oral)" data-price-cents="49500" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card" id="tcf-tef-one-on-one">
         <h3><span class="t-en">TCF/TEF Preparation (One on One)</span><span class="t-fr">Préparation TCF/TEF (cours individuel)</span></h3>
         <p class="price"><span class="t-en">$190.00</span><span class="t-fr">190,00 $</span></p>
-        <button class="btn btn-violet add-to-cart" type="button" data-id="tcf-tef-one-on-one" data-name-en="TCF/TEF Preparation (One on One)" data-name-fr="Préparation TCF/TEF (cours individuel)" data-price-cents="19000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="tcf-tef-one-on-one" data-name-en="TCF/TEF Preparation (One on One)" data-name-fr="Préparation TCF/TEF (cours individuel)" data-price-cents="19000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="tcf-tef-one-on-one" data-name-en="TCF/TEF Preparation (One on One)" data-name-fr="Préparation TCF/TEF (cours individuel)" data-price-cents="19000" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card" id="reussir-tcf-tef-manuel">
         <h3>Réussir TCF et TEF Canada, manuel complet A1-B2 (Williams Atanga)</h3>
         <p class="price"><span class="t-en">$161.00</span><span class="t-fr">161,00 $</span></p>
-        <button class="btn btn-violet add-to-cart" type="button" data-id="reussir-tcf-tef-manuel" data-name-en="Réussir TCF et TEF Canada, manuel complet A1-B2 (Williams Atanga)" data-name-fr="Réussir TCF et TEF Canada, manuel complet A1-B2 (Williams Atanga)" data-price-cents="16100"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>
+        <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="reussir-tcf-tef-manuel" data-name-en="Réussir TCF et TEF Canada, manuel complet A1-B2 (Williams Atanga)" data-name-fr="Réussir TCF et TEF Canada, manuel complet A1-B2 (Williams Atanga)" data-price-cents="16100"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="reussir-tcf-tef-manuel" data-name-en="Réussir TCF et TEF Canada, manuel complet A1-B2 (Williams Atanga)" data-name-fr="Réussir TCF et TEF Canada, manuel complet A1-B2 (Williams Atanga)" data-price-cents="16100" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
     </div>
   </div>
@@ -587,20 +571,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   </a>
 </nav>
 
-<div class="cart-overlay" id="cartOverlay"></div>
-<aside class="cart-panel" id="cartPanel" aria-label="Shopping cart" data-label-fr="Panier">
-  <div class="cart-panel-head">
-    <h2><span class="t-en">Your cart</span><span class="t-fr">Votre panier</span></h2>
-    <button class="cart-close" type="button" id="cartCloseBtn" aria-label="Close cart" data-label-fr="Fermer le panier">×</button>
-  </div>
-  <p class="cart-empty" id="cartEmpty"><span class="t-en">Your cart is empty.</span><span class="t-fr">Votre panier est vide.</span></p>
-  <ul class="cart-items" id="cartItems"></ul>
-  <div class="cart-foot" id="cartFoot">
-    <div class="cart-total"><span class="t-en">Total</span><span class="t-fr">Total</span> <strong id="cartTotal"></strong></div>
-    <p class="cart-note"><span class="t-en">Checkout is by email for now. Online payment will be added later.</span><span class="t-fr">La commande se fait par courriel pour l’instant. Le paiement en ligne sera ajouté plus tard.</span></p>
-    <a class="btn btn-gold" id="cartCheckoutBtn" href="#"><span class="t-en">Send order by email</span><span class="t-fr">Envoyer la commande par email</span></a>
-  </div>
-</aside>
+
 
 <script>
 (function(){
@@ -630,167 +601,81 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
 <script>(function(){var l='en';try{l=localStorage.getItem('vl-lang')||'en';}catch(e){}if(l!=='fr'){l='en';}document.documentElement.lang=l;if(l==='fr'){document.title='Boutique | Verbal Link Institute';document.querySelectorAll('[data-label-fr]').forEach(function(el){el.setAttribute('aria-label',el.getAttribute('data-label-fr'));});document.querySelectorAll('[data-alt-fr]').forEach(function(el){el.setAttribute('alt',el.getAttribute('data-alt-fr'));});}else{document.title='Shop | Verbal Link Institute';}})();</script>
 <script>
 (function(){
-  var KEY = "vl-cart";
-  var ADMIN = "admin@verballinkinstitute.ca";
-  function lang(){
-    try { return localStorage.getItem("vl-lang") === "fr" ? "fr" : "en"; }
-    catch (e) { return "en"; }
-  }
-  function fmtEN(cents){ return "$" + (cents / 100).toFixed(2); }
-  function fmtFR(cents){ return (cents / 100).toFixed(2).replace(".", ",") + " $"; }
-  function esc(v){
-    return String(v).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-  }
+  var CARTKEY = "vl-cart";
+  var WISHKEY = "vl-wishlist";
   var catalog = {};
   document.querySelectorAll(".add-to-cart").forEach(function(b){
-    catalog[b.getAttribute("data-id")] = {
-      nameEn: b.getAttribute("data-name-en"),
-      nameFr: b.getAttribute("data-name-fr"),
-      cents: parseInt(b.getAttribute("data-price-cents"), 10)
-    };
+    catalog[b.getAttribute("data-id")] = { nameEn: b.getAttribute("data-name-en"), nameFr: b.getAttribute("data-name-fr"), cents: parseInt(b.getAttribute("data-price-cents"), 10) };
   });
-  function load(){
+  function loadCart(){
     var cart = {};
     try {
-      var raw = localStorage.getItem(KEY);
-      if (!raw) { return cart; }
-      var data = JSON.parse(raw);
-      Object.keys(data).forEach(function(id){
-        if (catalog[id] && data[id] && data[id].qty > 0) {
-          cart[id] = {
-            nameEn: catalog[id].nameEn,
-            nameFr: catalog[id].nameFr,
-            cents: catalog[id].cents,
-            qty: Math.floor(data[id].qty)
-          };
-        }
-      });
+      var raw = localStorage.getItem(CARTKEY);
+      if (raw) {
+        var data = JSON.parse(raw);
+        Object.keys(data).forEach(function(id){
+          if (catalog[id] && data[id] && data[id].qty > 0) {
+            cart[id] = { nameEn: catalog[id].nameEn, nameFr: catalog[id].nameFr, cents: catalog[id].cents, qty: Math.floor(data[id].qty) };
+          }
+        });
+      }
     } catch (e) {}
     return cart;
   }
-  function save(cart){
-    try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {}
+  function saveCart(cart){ try { localStorage.setItem(CARTKEY, JSON.stringify(cart)); } catch (e) {} }
+  function loadWish(){
+    var w = {};
+    try {
+      var raw = localStorage.getItem(WISHKEY);
+      if (raw) {
+        var data = JSON.parse(raw);
+        Object.keys(data).forEach(function(id){
+          if (catalog[id] && data[id]) { w[id] = { nameEn: catalog[id].nameEn, nameFr: catalog[id].nameFr, cents: catalog[id].cents }; }
+        });
+      }
+    } catch (e) {}
+    return w;
   }
-  var panel = document.getElementById("cartPanel");
-  var overlay = document.getElementById("cartOverlay");
-  var itemsEl = document.getElementById("cartItems");
-  var emptyEl = document.getElementById("cartEmpty");
-  var footEl = document.getElementById("cartFoot");
-  var totalEl = document.getElementById("cartTotal");
+  function saveWish(w){ try { localStorage.setItem(WISHKEY, JSON.stringify(w)); } catch (e) {} }
+  function cartCount(cart){ var n = 0; Object.keys(cart).forEach(function(id){ n += cart[id].qty; }); return n; }
   var countEl = document.getElementById("cartCount");
-  var checkoutEl = document.getElementById("cartCheckoutBtn");
-  function openPanel(){
-    panel.classList.add("open");
-    overlay.classList.add("open");
-    document.body.style.overflow = "hidden";
-    render();
+  function updateBadge(){
+    var c = cartCount(loadCart());
+    countEl.textContent = String(c);
+    if (c > 0) { countEl.classList.add("show"); } else { countEl.classList.remove("show"); }
   }
-  function closePanel(){
-    panel.classList.remove("open");
-    overlay.classList.remove("open");
-    document.body.style.overflow = "";
-  }
-  function cartCount(cart){
-    var n = 0;
-    Object.keys(cart).forEach(function(id){ n += cart[id].qty; });
-    return n;
-  }
-  function cartTotal(cart){
-    var t = 0;
-    Object.keys(cart).forEach(function(id){ t += cart[id].qty * cart[id].cents; });
-    return t;
-  }
-  function buildCheckoutHref(cart){
-    var en = ["I would like to order:"];
-    var fr = ["Je souhaite commander :"];
-    Object.keys(cart).forEach(function(id){
-      var it = cart[id];
-      en.push(it.qty + " x " + it.nameEn + " (" + fmtEN(it.qty * it.cents) + ")");
-      fr.push(it.qty + " x " + it.nameFr + " (" + fmtFR(it.qty * it.cents) + ")");
+  function refreshWishUI(){
+    var w = loadWish();
+    document.querySelectorAll(".wish-btn").forEach(function(b){
+      var id = b.getAttribute("data-id");
+      if (w[id]) { b.classList.add("saved"); b.textContent = "\u2665"; }
+      else { b.classList.remove("saved"); b.textContent = "\u2661"; }
     });
-    en.push("Total: " + fmtEN(cartTotal(cart)));
-    fr.push("Total : " + fmtFR(cartTotal(cart)));
-    var subject = "Order / Commande - Verbal Link Institute Shop";
-    var body = en.join("\n") + "\n\n" + fr.join("\n");
-    return "mailto:" + ADMIN + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
   }
-  function render(){
-    var cart = load();
-    var ids = Object.keys(cart);
-    var count = cartCount(cart);
-    var total = cartTotal(cart);
-    countEl.textContent = String(count);
-    if (count > 0) { countEl.classList.add("show"); } else { countEl.classList.remove("show"); }
-    if (ids.length === 0) {
-      itemsEl.innerHTML = "";
-      emptyEl.style.display = "block";
-      footEl.style.display = "none";
-      checkoutEl.setAttribute("href", "#");
-      return;
-    }
-    emptyEl.style.display = "none";
-    footEl.style.display = "block";
-    var html = "";
-    ids.forEach(function(id){
-      var it = cart[id];
-      var line = it.qty * it.cents;
-      var decLabel = lang() === "fr" ? "Diminuer la quantité" : "Decrease quantity";
-      var incLabel = lang() === "fr" ? "Augmenter la quantité" : "Increase quantity";
-      var remLabel = lang() === "fr" ? "Retirer du panier" : "Remove from cart";
-      html += '<li class="cart-item">';
-      html += '<div><strong class="cart-item-name"><span class="t-en">' + esc(it.nameEn) + '</span><span class="t-fr">' + esc(it.nameFr) + '</span></strong>';
-      html += '<div class="cart-item-unit"><span class="t-en">' + fmtEN(it.cents) + ' each</span><span class="t-fr">' + fmtFR(it.cents) + ' chacun</span></div></div>';
-      html += '<div class="cart-item-controls">';
-      html += '<button type="button" class="qty-btn" data-action="dec" data-id="' + esc(id) + '" aria-label="' + decLabel + '">-</button>';
-      html += '<span class="qty">' + it.qty + '</span>';
-      html += '<button type="button" class="qty-btn" data-action="inc" data-id="' + esc(id) + '" aria-label="' + incLabel + '">+</button>';
-      html += '<button type="button" class="cart-remove" data-action="remove" data-id="' + esc(id) + '" aria-label="' + remLabel + '"><span class="t-en">Remove</span><span class="t-fr">Retirer</span></button>';
-      html += '</div>';
-      html += '<div class="cart-item-total"><span class="t-en">' + fmtEN(line) + '</span><span class="t-fr">' + fmtFR(line) + '</span></div>';
-      html += '</li>';
-    });
-    itemsEl.innerHTML = html;
-    totalEl.innerHTML = '<span class="t-en">' + fmtEN(total) + '</span><span class="t-fr">' + fmtFR(total) + '</span>';
-    checkoutEl.setAttribute("href", buildCheckoutHref(cart));
-  }
-  itemsEl.addEventListener("click", function(e){
-    var btn = e.target.closest("button[data-action]");
-    if (!btn) { return; }
-    var id = btn.getAttribute("data-id");
-    var action = btn.getAttribute("data-action");
-    var cart = load();
-    if (!cart[id]) { return; }
-    if (action === "inc") { cart[id].qty += 1; }
-    if (action === "dec") { cart[id].qty -= 1; if (cart[id].qty <= 0) { delete cart[id]; } }
-    if (action === "remove") { delete cart[id]; }
-    save(cart);
-    render();
-  });
   document.querySelectorAll(".add-to-cart").forEach(function(b){
     b.addEventListener("click", function(){
       var id = b.getAttribute("data-id");
-      var cart = load();
-      if (!cart[id]) {
-        cart[id] = {
-          nameEn: catalog[id].nameEn,
-          nameFr: catalog[id].nameFr,
-          cents: catalog[id].cents,
-          qty: 0
-        };
-      }
+      var cart = loadCart();
+      if (!cart[id]) { cart[id] = { nameEn: catalog[id].nameEn, nameFr: catalog[id].nameFr, cents: catalog[id].cents, qty: 0 }; }
       cart[id].qty += 1;
-      save(cart);
-      openPanel();
+      saveCart(cart);
+      updateBadge();
     });
   });
-  document.getElementById("cartOpenBtn").addEventListener("click", openPanel);
-  document.getElementById("cartCloseBtn").addEventListener("click", closePanel);
-  overlay.addEventListener("click", closePanel);
-  document.addEventListener("keydown", function(e){
-    if (e.key === "Escape") { closePanel(); }
+  document.querySelectorAll(".wish-btn").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id = b.getAttribute("data-id");
+      var w = loadWish();
+      if (w[id]) { delete w[id]; }
+      else { w[id] = { nameEn: catalog[id].nameEn, nameFr: catalog[id].nameFr, cents: catalog[id].cents }; }
+      saveWish(w);
+      refreshWishUI();
+    });
   });
-  render();
+  updateBadge();
+  refreshWishUI();
 })();
+
 </script>
 </body>
 </html>

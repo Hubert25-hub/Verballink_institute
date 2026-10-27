@@ -337,7 +337,23 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
 .search-results .res-type{flex:none;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
 .search-results .res-none{padding:11px 12px;color:var(--ink-soft)}
 
-  </style>
+  
+  /* ---------- contact popup ---------- */
+  #contactDialog{border:0;border-radius:20px;padding:0;max-width:640px;width:calc(100% - 32px);max-height:calc(100vh - 32px);overflow:auto;background:#fff8e7;color:var(--ink);box-shadow:var(--shadow)}
+  #contactDialog::backdrop{background:rgba(16,24,40,.6)}
+  .contact-pop{position:relative;padding:34px 32px}
+  .contact-pop h2{font-family:"Sora",sans-serif;font-size:30px;font-weight:800;margin:0 0 10px}
+  .contact-pop .pop-intro{color:var(--ink-soft);font-size:16.5px;margin:0 0 22px}
+  .contact-pop h3{font-family:"Sora",sans-serif;font-size:19px;font-weight:800;margin:0 0 18px;padding-top:18px;border-top:1px solid var(--line)}
+  .contact-pop .field-label{display:block;font-weight:700;font-size:15.5px;margin:16px 0 7px}
+  .contact-pop input[type="text"],.contact-pop input[type="email"],.contact-pop input[type="tel"],.contact-pop textarea{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:16px;background:#fff;box-sizing:border-box}
+  .contact-pop textarea{resize:vertical}
+  .contact-pop .name-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:520px){.contact-pop .name-row{grid-template-columns:1fr}}
+  .contact-pop .sub{display:block;font-size:13.5px;color:var(--ink-soft);margin-top:5px}
+  .contact-pop .pop-close{position:absolute;top:14px;right:16px;border:0;background:transparent;font-size:28px;line-height:1;cursor:pointer;color:var(--ink)}
+  .contact-pop form .btn{margin-top:22px}
+</style>
 </head>
 <body>
 
@@ -456,21 +472,21 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
           <h3><span class="t-en">TCF Canada preparation</span><span class="t-fr">Préparation au TCF Canada</span></h3>
           <p class="desc"><span class="t-en">Prepare for your Canadian immigration and citizenship tests with our expert-led TCF Canada courses. Exam-focused curriculum, live classes, a free course manual and mock oral exams.</span><span class="t-fr">Préparez vos tests d’immigration et de citoyenneté canadiennes avec nos cours de TCF Canada dirigés par des experts. Programme axé sur l’examen, cours en direct, manuel de cours gratuit et examens oraux blancs.</span></p>
           <div class="meta"><span><span class="t-en">Levels A1 to B2</span><span class="t-fr">Niveaux A1 à B2</span></span><span><span class="t-en">8-week intensive</span><span class="t-fr">Intensif de 8 semaines</span></span><span><span class="t-en">2 sessions / week</span><span class="t-fr">2 séances / semaine</span></span><span><span class="t-en">In person + online</span><span class="t-fr">En personne + en ligne</span></span></div>
-          <a class="btn btn-violet" href="tcf-tef-preparation.html"><span class="t-en">Learn more</span><span class="t-fr">En savoir plus</span> <span class="arr">&rarr;</span></a>
+          <button type="button" class="btn btn-violet" data-contact-open><span class="t-en">Learn more</span><span class="t-fr">En savoir plus</span> <span class="arr">&rarr;</span></button>
         </article>
         <article class="card">
           <span class="tag"><span class="t-en">Immigration &amp; careers</span><span class="t-fr">Immigration et carrières</span></span>
           <h3><span class="t-en">TEF Canada preparation</span><span class="t-fr">Préparation au TEF Canada</span></h3>
           <p class="desc"><span class="t-en">Master the TEF Canada exam for a competitive edge in your academic and professional pursuits, with leading experts in the field and a structured course for every level.</span><span class="t-fr">Maîtrisez l’examen TEF Canada pour un avantage concurrentiel dans vos projets académiques et professionnels, avec des experts de premier plan et un cours structuré pour chaque niveau.</span></p>
           <div class="meta"><span><span class="t-en">Levels A1 to B2</span><span class="t-fr">Niveaux A1 à B2</span></span><span><span class="t-en">32 to 52 hours</span><span class="t-fr">32 à 52 heures</span></span><span><span class="t-en">Online · in person · hybrid</span><span class="t-fr">En ligne · en personne · hybride</span></span></div>
-          <a class="btn btn-violet" href="tef-canada.html"><span class="t-en">Learn more</span><span class="t-fr">En savoir plus</span> <span class="arr">&rarr;</span></a>
+          <button type="button" class="btn btn-violet" data-contact-open><span class="t-en">Learn more</span><span class="t-fr">En savoir plus</span> <span class="arr">&rarr;</span></button>
         </article>
         <article class="card">
           <span class="tag"><span class="t-en">Public service</span><span class="t-fr">Fonction publique</span></span>
           <h3><span class="t-en">French for Government SLE</span><span class="t-fr">Français pour le SLE du gouvernement</span></h3>
           <p class="desc"><span class="t-en">Public service language training for the Second Language Evaluation, reading, writing and oral interaction, with individualized attention and continuous feedback at every step.</span><span class="t-fr">Formation linguistique pour la fonction publique en vue de l’Évaluation de langue seconde : lecture, écriture et interaction orale, avec une attention individualisée et une rétroaction continue à chaque étape.</span></p>
           <div class="meta"><span><span class="t-en">Levels A · B · C</span><span class="t-fr">Niveaux A · B · C</span></span><span><span class="t-en">Virtual across Canada</span><span class="t-fr">Virtuel partout au Canada</span></span><span><span class="t-en">In person in BC &amp; Ottawa</span><span class="t-fr">En personne en BC et à Ottawa</span></span></div>
-          <a class="btn btn-violet" href="government.html"><span class="t-en">Learn more</span><span class="t-fr">En savoir plus</span> <span class="arr">&rarr;</span></a>
+          <button type="button" class="btn btn-violet" data-contact-open><span class="t-en">Learn more</span><span class="t-fr">En savoir plus</span> <span class="arr">&rarr;</span></button>
         </article>
       </div>
     </div>
@@ -962,5 +978,44 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
 })();
 </script>
 
+
+<dialog id="contactDialog" aria-label="Contact us">
+  <div class="contact-pop">
+    <button type="button" class="pop-close" data-contact-close aria-label="Close">&times;</button>
+    <h2><span class="t-en">Contact us</span><span class="t-fr">Contactez-nous</span></h2>
+    <p class="pop-intro"><span class="t-en">Share your French level, exam goals, and availability so our Course Administrator can recommend the right program.</span><span class="t-fr">Partagez votre niveau de français, vos objectifs d'examen et vos disponibilités afin que notre administrateur de cours puisse vous recommander le bon programme.</span></p>
+    <h3><span class="t-en">Personal Information</span><span class="t-fr">Informations personnelles</span></h3>
+    <form action="mailto:admin@verballinkinstitute.ca" method="post" enctype="text/plain">
+      <p class="field-label"><span class="t-en">Full Name *</span><span class="t-fr">Nom complet *</span></p>
+      <div class="name-row">
+        <div><input type="text" id="popFirst" name="First Name" required><label class="sub" for="popFirst"><span class="t-en">First Name</span><span class="t-fr">Prénom</span></label></div>
+        <div><input type="text" id="popLast" name="Last Name" required><label class="sub" for="popLast"><span class="t-en">Last Name</span><span class="t-fr">Nom de famille</span></label></div>
+      </div>
+      <label class="field-label" for="popEmail"><span class="t-en">Email Address *</span><span class="t-fr">Adresse courriel *</span></label>
+      <input type="email" id="popEmail" name="Email Address" required>
+      <label class="field-label" for="popPhone"><span class="t-en">Phone Number</span><span class="t-fr">Numéro de téléphone</span></label>
+      <input type="tel" id="popPhone" name="Phone Number">
+      <label class="field-label" for="popLevel"><span class="t-en">Your French level</span><span class="t-fr">Votre niveau de français</span></label>
+      <input type="text" id="popLevel" name="French level" placeholder="A1, A2, B1, B2, C1, C2">
+      <label class="field-label" for="popGoals"><span class="t-en">Your exam goals and availability</span><span class="t-fr">Vos objectifs d'examen et vos disponibilités</span></label>
+      <textarea id="popGoals" name="Exam goals and availability" rows="4"></textarea>
+      <button type="submit" class="btn btn-violet"><span class="t-en">Send</span><span class="t-fr">Envoyer</span></button>
+    </form>
+  </div>
+</dialog>
+<script>
+(function(){
+  var dlg = document.getElementById("contactDialog");
+  if(!dlg) return;
+  document.querySelectorAll("[data-contact-open]").forEach(function(b){
+    b.addEventListener("click", function(){ dlg.showModal(); });
+  });
+  var closeBtn = dlg.querySelector("[data-contact-close]");
+  if(closeBtn) closeBtn.addEventListener("click", function(){ dlg.close(); });
+  dlg.addEventListener("click", function(ev){ if(ev.target === dlg) dlg.close(); });
+  var form = dlg.querySelector("form");
+  if(form) form.addEventListener("submit", function(){ dlg.close(); });
+})();
+</script>
 </body>
 </html>

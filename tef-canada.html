@@ -373,6 +373,21 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   
   html[lang="en"] .t-fr{display:none}
   html[lang="fr"] .t-en{display:none}
+  /* ---------- contact popup ---------- */
+  #contactDialog{border:0;border-radius:20px;padding:0;max-width:640px;width:calc(100% - 32px);max-height:calc(100vh - 32px);overflow:auto;background:#fff8e7;color:var(--ink);box-shadow:var(--shadow)}
+  #contactDialog::backdrop{background:rgba(16,24,40,.6)}
+  .contact-pop{position:relative;padding:34px 32px}
+  .contact-pop h2{font-family:"Sora",sans-serif;font-size:30px;font-weight:800;margin:0 0 10px}
+  .contact-pop .pop-intro{color:var(--ink-soft);font-size:16.5px;margin:0 0 22px}
+  .contact-pop h3{font-family:"Sora",sans-serif;font-size:19px;font-weight:800;margin:0 0 18px;padding-top:18px;border-top:1px solid var(--line)}
+  .contact-pop .field-label{display:block;font-weight:700;font-size:15.5px;margin:16px 0 7px}
+  .contact-pop input[type="text"],.contact-pop input[type="email"],.contact-pop input[type="tel"],.contact-pop textarea{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:16px;background:#fff;box-sizing:border-box}
+  .contact-pop textarea{resize:vertical}
+  .contact-pop .name-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:520px){.contact-pop .name-row{grid-template-columns:1fr}}
+  .contact-pop .sub{display:block;font-size:13.5px;color:var(--ink-soft);margin-top:5px}
+  .contact-pop .pop-close{position:absolute;top:14px;right:16px;border:0;background:transparent;font-size:28px;line-height:1;cursor:pointer;color:var(--ink)}
+  .contact-pop form .btn{margin-top:22px}
 </style>
 <style>
   .course-meta{display:flex;gap:10px 26px;flex-wrap:wrap;margin-top:16px}
@@ -591,5 +606,43 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
 })();
 </script>
 <script>(function(){var l='en';try{l=localStorage.getItem('vl-lang')||'en';}catch(e){}if(l!=='fr'){l='en';}document.documentElement.lang=l;if(l==='fr'){document.title='TEF Canada | Verbal Link Institute';document.querySelectorAll('[data-label-fr]').forEach(function(el){el.setAttribute('aria-label',el.getAttribute('data-label-fr'));});document.querySelectorAll('[data-alt-fr]').forEach(function(el){el.setAttribute('alt',el.getAttribute('data-alt-fr'));});document.querySelectorAll('option[data-opt-fr]').forEach(function(o){o.text=o.getAttribute('data-opt-fr');});}else{document.title='TEF Canada | Verbal Link Institute';}})();</script>
+<dialog id="contactDialog" aria-label="Contact us">
+  <div class="contact-pop">
+    <button type="button" class="pop-close" data-contact-close aria-label="Close">&times;</button>
+    <h2><span class="t-en">Contact us</span><span class="t-fr">Contactez-nous</span></h2>
+    <p class="pop-intro"><span class="t-en">Share your French level, exam goals, and availability so our Course Administrator can recommend the right program.</span><span class="t-fr">Partagez votre niveau de français, vos objectifs d'examen et vos disponibilités afin que notre administrateur de cours puisse vous recommander le bon programme.</span></p>
+    <h3><span class="t-en">Personal Information</span><span class="t-fr">Informations personnelles</span></h3>
+    <form action="mailto:admin@verballinkinstitute.ca" method="post" enctype="text/plain">
+      <p class="field-label"><span class="t-en">Full Name *</span><span class="t-fr">Nom complet *</span></p>
+      <div class="name-row">
+        <div><input type="text" id="popFirst" name="First Name" required><label class="sub" for="popFirst"><span class="t-en">First Name</span><span class="t-fr">Prénom</span></label></div>
+        <div><input type="text" id="popLast" name="Last Name" required><label class="sub" for="popLast"><span class="t-en">Last Name</span><span class="t-fr">Nom de famille</span></label></div>
+      </div>
+      <label class="field-label" for="popEmail"><span class="t-en">Email Address *</span><span class="t-fr">Adresse courriel *</span></label>
+      <input type="email" id="popEmail" name="Email Address" required>
+      <label class="field-label" for="popPhone"><span class="t-en">Phone Number</span><span class="t-fr">Numéro de téléphone</span></label>
+      <input type="tel" id="popPhone" name="Phone Number">
+      <label class="field-label" for="popLevel"><span class="t-en">Your French level</span><span class="t-fr">Votre niveau de français</span></label>
+      <input type="text" id="popLevel" name="French level" placeholder="A1, A2, B1, B2, C1, C2">
+      <label class="field-label" for="popGoals"><span class="t-en">Your exam goals and availability</span><span class="t-fr">Vos objectifs d'examen et vos disponibilités</span></label>
+      <textarea id="popGoals" name="Exam goals and availability" rows="4"></textarea>
+      <button type="submit" class="btn btn-violet"><span class="t-en">Send</span><span class="t-fr">Envoyer</span></button>
+    </form>
+  </div>
+</dialog>
+<script>
+(function(){
+  var dlg = document.getElementById("contactDialog");
+  if(!dlg) return;
+  function openIfHash(){ if(location.hash === "#contact-popup" && !dlg.open) dlg.showModal(); }
+  window.addEventListener("hashchange", openIfHash);
+  openIfHash();
+  var closeBtn = dlg.querySelector("[data-contact-close]");
+  if(closeBtn) closeBtn.addEventListener("click", function(){ dlg.close(); });
+  dlg.addEventListener("click", function(ev){ if(ev.target === dlg) dlg.close(); });
+  var form = dlg.querySelector("form");
+  if(form) form.addEventListener("submit", function(){ dlg.close(); });
+})();
+</script>
 </body>
 </html>

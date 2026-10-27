@@ -373,6 +373,13 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   
   html[lang="en"] .t-fr{display:none}
   html[lang="fr"] .t-en{display:none}
+
+  .location-block iframe{width:100%;height:320px;border:0;border-radius:14px;margin:12px 0}
+  .social-row{display:flex;gap:10px;margin-top:14px}
+  .social-row a{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;color:#fff;font-weight:800;text-decoration:none;font-size:15px}
+  .social-row a.fb{background:#1877F2}
+  .social-row a.ig{background:#E1306C}
+  .social-row a.wa{background:#25D366}
 </style>
 <style>
   .course-meta{display:flex;gap:10px 26px;flex-wrap:wrap;margin-top:16px}
@@ -538,8 +545,14 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
         <p class="form-note"><span class="t-en">This form opens your email app so you can send your request.</span><span class="t-fr">Ce formulaire ouvre votre application de courriel pour envoyer votre demande.</span></p>
       </form>
       <div class="location-block">
-        <h3><span class="t-en">Visit us</span><span class="t-fr">Nous trouver</span></h3>
+        <h3><span class="t-en">Our location</span><span class="t-fr">Notre emplacement</span></h3>
+        <iframe src="https://www.google.com/maps?q=10136+King+George+Blvd+Surrey+BC&amp;output=embed" title="Map to Verbal Link Institute" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         <p>10136 King George Blvd, Surrey, BC</p>
+        <div class="social-row">
+          <a class="fb" href="https://facebook.com/verballinkinstitute" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          <a class="ig" href="https://instagram.com/verballinkinstitute" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a class="wa" href="https://api.whatsapp.com/send?phone=1%28778%29802-9927" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        </div>
       </div>
     </div>
   </div>

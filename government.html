@@ -387,6 +387,10 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   .contact-pop .sub{display:block;font-size:13.5px;color:var(--ink-soft);margin-top:5px}
   .contact-pop .pop-close{position:absolute;top:14px;right:16px;border:0;background:transparent;font-size:28px;line-height:1;cursor:pointer;color:var(--ink)}
   .contact-pop form .btn{margin-top:22px}
+.level-side{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.level-circle{width:104px;height:104px;border-radius:50%;object-fit:cover;display:block}
+.section-photo{width:100%;height:280px;object-fit:cover;object-position:center;border-radius:20px;display:block;margin-bottom:24px}
+@media (max-width:700px){.level-circle{width:84px;height:84px}.section-photo{height:200px}}
 </style>
 </head>
 <body>
@@ -482,7 +486,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
 
       <div class="levels">
         <article class="level">
-          <div class="badge"><span class="big-letter">A</span><span class="lv"><span class="t-en">Level</span><span class="t-fr">Niveau</span></span></div>
+          <div class="level-side"><img class="level-circle" src="verbal%20link/12.webp" alt="" /><div class="badge"><span class="big-letter">A</span><span class="lv"><span class="t-en">Level</span><span class="t-fr">Niveau</span></span></div></div>
           <div>
             <h3><span class="t-en">Level A</span><span class="t-fr">Niveau A</span> <span><span class="t-en">Intermediate Proficiency</span><span class="t-fr">Compétence intermédiaire</span></span></h3>
             <p class="intro"><span class="t-en">Level A is designed for learners beginning their journey toward bilingual workplace communication. At this stage, learners develop foundational English or French skills needed for simple and routine professional interactions.</span><span class="t-fr">Le niveau A s’adresse aux apprenants qui commencent leur parcours vers la communication bilingue en milieu de travail. À cette étape, les apprenants développent les bases en anglais ou en français nécessaires pour des interactions professionnelles simples et courantes.</span></p>
@@ -499,7 +503,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
         </article>
 
         <article class="level">
-          <div class="badge"><span class="big-letter">B</span><span class="lv"><span class="t-en">Level</span><span class="t-fr">Niveau</span></span></div>
+          <div class="level-side"><img class="level-circle" src="verbal%20link/9.webp" alt="" /><div class="badge"><span class="big-letter">B</span><span class="lv"><span class="t-en">Level</span><span class="t-fr">Niveau</span></span></div></div>
           <div>
             <h3><span class="t-en">Level B</span><span class="t-fr">Niveau B</span> <span><span class="t-en">Intermediate Proficiency</span><span class="t-fr">Compétence intermédiaire</span></span></h3>
             <p class="intro"><span class="t-en">Level B focuses on developing more independent and effective communication skills for professional environments. Learners improve their ability to understand, discuss, and respond to more complex workplace situations in English or French.</span><span class="t-fr">Le niveau B vise à développer des compétences de communication plus autonomes et efficaces en milieu professionnel. Les apprenants améliorent leur capacité à comprendre, à discuter et à répondre à des situations de travail plus complexes, en anglais ou en français.</span></p>
@@ -516,7 +520,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
         </article>
 
         <article class="level">
-          <div class="badge"><span class="big-letter">C</span><span class="lv"><span class="t-en">Level</span><span class="t-fr">Niveau</span></span></div>
+          <div class="level-side"><img class="level-circle" src="verbal%20link/16.webp" alt="" /><div class="badge"><span class="big-letter">C</span><span class="lv"><span class="t-en">Level</span><span class="t-fr">Niveau</span></span></div></div>
           <div>
             <h3><span class="t-en">Level C</span><span class="t-fr">Niveau C</span> <span><span class="t-en">Advanced Proficiency</span><span class="t-fr">Compétence avancée</span></span></h3>
             <p class="intro"><span class="t-en">Level C is intended for learners aiming for advanced professional fluency and high-level bilingual performance. This level prepares participants for complex communication tasks requiring precision, confidence, and strong comprehension skills.</span><span class="t-fr">Le niveau C s’adresse aux apprenants qui visent une fluidité professionnelle avancée et un rendement bilingue de haut niveau. Ce niveau prépare les participants à des tâches de communication complexes qui exigent précision, confiance et de solides compétences de compréhension.</span></p>
@@ -554,6 +558,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   <!-- ================= WHAT OUR TRAINING COVERS ================= -->
   <section id="covers" style="padding-top:6px">
     <div class="wrap">
+      <img class="section-photo" src="verbal%20link/15.webp" alt="" />
       <div class="section-head">
         <span class="kicker"><span class="t-en">What our training covers</span><span class="t-fr">Ce que couvre notre formation</span></span>
         <h2><span class="t-en">The three SLE components, covered in depth</span><span class="t-fr">Les trois composantes du SLE, couvertes en profondeur</span></h2>
@@ -581,6 +586,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   <!-- ================= WHY CHOOSE ================= -->
   <section class="why" id="why">
     <div class="wrap">
+      <img class="section-photo" src="verbal%20link/4.webp" alt="" />
       <div class="section-head">
         <span class="kicker"><span class="t-en">Why choose our training</span><span class="t-fr">Pourquoi choisir notre formation</span></span>
         <h2><span class="t-en">Built for the federal assessment, and for real work</span><span class="t-fr">Conçue pour l’évaluation fédérale, et pour le vrai travail</span></h2>
@@ -599,6 +605,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   <!-- ================= WHO IT'S FOR ================= -->
   <section id="who">
     <div class="wrap">
+      <img class="section-photo" src="verbal%20link/17.webp" alt="" />
       <div class="section-head">
         <span class="kicker"><span class="t-en">Who this program is for</span><span class="t-fr">À qui s’adresse ce programme</span></span>
         <h2><span class="t-en">Designed for public service careers</span><span class="t-fr">Conçu pour les carrières dans la fonction publique</span></h2>

@@ -314,6 +314,13 @@
   @media (min-width:901px){.mobile-menu{display:none !important}}
 
 nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+
+  /* ---------- store cart button (same as shop/cart pages) ---------- */
+  .cart-btn{display:inline-flex;align-items:center;gap:8px;align-self:center;position:relative;background:var(--surface);color:var(--violet);border:2px solid var(--violet);border-radius:12px;padding:11px 16px;font-family:"Sora",sans-serif;font-weight:700;font-size:15px;cursor:pointer;flex-shrink:0;text-decoration:none}
+  .cart-btn svg{width:20px;height:20px}
+  .cart-count{display:none;min-width:22px;height:22px;border-radius:11px;background:var(--gold);color:#3A2A00;font-size:13px;font-weight:800;align-items:center;justify-content:center;padding:0 5px}
+  .cart-count.show{display:inline-flex}
+  @media (max-width:520px){ header.site .wrap{gap:12px} .cart-btn{padding:10px 12px;font-size:14px} }
   </style>
 </head>
 <body>
@@ -340,6 +347,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
     </nav>
     <a class="btn btn-gold" href="demo-class.html"><span class="t-en">Book a free trial class</span><span class="t-fr">Réservez un cours d’essai gratuit</span></a>
     <div class="lang-toggle" role="group" aria-label="Language"><button type="button" data-lang="en" class="active">EN</button><button type="button" data-lang="fr">FR</button></div>
+    <a class="cart-btn" href="cart.html" aria-label="View cart" data-label-fr="Voir le panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M3 3h2l2.4 12.4A2 2 0 0 0 9.4 17H18a2 2 0 0 0 2-1.6L21.5 8H6"/></svg><span class="t-en">Cart</span><span class="t-fr">Panier</span><span class="cart-count" id="cartCount">0</span></a>
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">⋮</button>
   </div>
   <nav class="mobile-menu" id="mobileMenu" aria-label="Menu">
@@ -782,6 +790,27 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
       btn.setAttribute('aria-expanded', 'false');
     }
   });
+})();
+</script>
+<script>
+(function(){
+  var countEl = document.getElementById("cartCount");
+  if (!countEl) { return; }
+  var CARTKEY = "vl-cart";
+  function cartTotal(){
+    try {
+      var data = JSON.parse(localStorage.getItem(CARTKEY) || "{}");
+      var n = 0;
+      Object.keys(data).forEach(function(id){
+        var q = data[id] && data[id].qty;
+        if (typeof q === "number" && q > 0) { n += q; }
+      });
+      return n;
+    } catch (e) { return 0; }
+  }
+  var c = cartTotal();
+  countEl.textContent = String(c);
+  if (c > 0) { countEl.classList.add("show"); } else { countEl.classList.remove("show"); }
 })();
 </script>
 </body>

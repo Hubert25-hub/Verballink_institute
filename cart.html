@@ -410,7 +410,13 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   .page-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin:24px 0}
   .page-continue{font-weight:700}
   .pay-badges{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 12px}
-  .pay-badge{display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);padding:8px 14px;font-family:"Sora",sans-serif;font-weight:800;font-size:14px;color:var(--ink);letter-spacing:.02em}
+  .pay-badge{display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--line);border-radius:8px;background:#fff;padding:8px 14px;min-height:44px;box-sizing:border-box}
+  .pay-badge svg{height:28px;width:auto;display:block}
+  .book-mini{flex-shrink:0;width:70px;height:98px;border-radius:2px 6px 6px 2px;background:linear-gradient(135deg,var(--violet-deep),var(--violet));color:#fff;padding:9px 7px 9px 13px;display:flex;flex-direction:column;gap:3px;box-shadow:3px 4px 10px rgba(37,18,57,.25);position:relative;overflow:hidden}
+  .book-mini::before{content:"";position:absolute;left:5px;top:0;bottom:0;width:3px;background:rgba(0,0,0,.28);box-shadow:1px 0 0 rgba(255,255,255,.22)}
+  .book-mini-title{font-size:10px;font-weight:800;line-height:1.25}
+  .book-mini-sub{font-size:8px;font-weight:700;color:var(--gold)}
+  .book-mini-author{margin-top:auto;font-size:7.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
   .page-note{font-size:14px;color:var(--ink-soft);margin-bottom:8px}
   .page-cart-empty{color:var(--ink-soft);margin-bottom:16px}
   .wish-list{list-style:none;margin:0;padding:0;display:grid;gap:16px}
@@ -478,7 +484,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
       <a class="btn btn-violet" id="pageCheckoutBtn" href="#"><span class="t-en">Go to checkout</span><span class="t-fr">Passer à la caisse</span></a>
     </div>
     <div class="pay-badges" aria-label="Accepted payment methods" data-label-fr="Moyens de paiement acceptés">
-      <span class="pay-badge">VISA</span><span class="pay-badge">Mastercard</span><span class="pay-badge">American Express</span><span class="pay-badge">Interac</span>
+      <span class="pay-badge"><svg viewBox="0 0 64 22" role="img" aria-label="VISA"><text x="32" y="17" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="900" font-style="italic" letter-spacing="1" fill="#1A1F71">VISA</text></svg></span><span class="pay-badge"><svg viewBox="0 0 132 36" role="img" aria-label="Mastercard"><circle cx="18" cy="18" r="14" fill="#EB001B"/><circle cx="32" cy="18" r="14" fill="#F79E1B" fill-opacity="0.85"/><text x="54" y="23" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="800" fill="#1A1A1A">Mastercard</text></svg></span><span class="pay-badge"><svg viewBox="0 0 68 32" role="img" aria-label="American Express"><rect x="1" y="1" width="66" height="30" rx="5" fill="#2E77BC"/><text x="34" y="21" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="800" letter-spacing="1" fill="#FFFFFF">AMEX</text></svg></span><span class="pay-badge"><svg viewBox="0 0 96 32" role="img" aria-label="Interac"><path d="M18 9 Q38 2 58 9" fill="none" stroke="#F58220" stroke-width="3" stroke-linecap="round"/><path d="M30 12 Q42 7 54 12" fill="none" stroke="#FFC72C" stroke-width="2.5" stroke-linecap="round"/><text x="16" y="27" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="800" font-style="italic" fill="#003DA5">Interac</text></svg></span>
     </div>
     <p class="page-note"><span class="t-en">Checkout is by email for now. Online payment will be added later.</span><span class="t-fr">La commande se fait par courriel pour l’instant. Le paiement en ligne sera ajouté plus tard.</span></p>
   </div>
@@ -708,7 +714,10 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
       var line = it.qty * it.cents;
       var qtyLabel = lang() === "fr" ? "Quantité" : "Quantity";
       var remLabel = lang() === "fr" ? "Retirer du panier" : "Remove from cart";
+      var bookLabel = lang() === "fr" ? "Couverture du livre" : "Book cover";
+      var bookMini = (id === "reussir-tcf-tef-manuel") ? '<div class="book-mini" aria-label="' + bookLabel + '"><span class="book-mini-title">Réussir TCF et TEF Canada</span><span class="book-mini-sub">Manuel complet A1-B2</span><span class="book-mini-author">Williams Atanga</span></div>' : "";
       html += '<li class="page-cart-row">';
+      html += bookMini;
       html += '<div class="page-cart-name"><a href="shop.html#' + esc(id) + '"><span class="t-en">' + esc(it.nameEn) + '</span><span class="t-fr">' + esc(it.nameFr) + '</span></a></div>';
       html += '<label class="page-qty-label"><span class="t-en">Quantity</span><span class="t-fr">Quantité</span> <select class="page-qty" data-id="' + esc(id) + '" aria-label="' + qtyLabel + '">' + qtyOptions(it.qty) + '</select></label>';
       html += '<button type="button" class="page-remove" data-id="' + esc(id) + '" aria-label="' + remLabel + '">\u00d7</button>';
@@ -728,7 +737,10 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
     ids.forEach(function(id){
       var it = w[id];
       var remLabel = lang() === "fr" ? "Retirer de la liste de souhaits" : "Remove from wishlist";
+      var bookLabel = lang() === "fr" ? "Couverture du livre" : "Book cover";
+      var bookMini = (id === "reussir-tcf-tef-manuel") ? '<div class="book-mini" aria-label="' + bookLabel + '"><span class="book-mini-title">Réussir TCF et TEF Canada</span><span class="book-mini-sub">Manuel complet A1-B2</span><span class="book-mini-author">Williams Atanga</span></div>' : "";
       html += '<li class="wish-row">';
+      html += bookMini;
       html += '<div class="page-cart-name"><a href="shop.html#' + esc(id) + '"><span class="t-en">' + esc(it.nameEn) + '</span><span class="t-fr">' + esc(it.nameFr) + '</span></a></div>';
       html += '<p class="price"><span class="t-en">' + fmtEN(it.cents) + '</span><span class="t-fr">' + fmtFR(it.cents) + '</span></p>';
       html += '<button class="btn btn-violet add-to-cart" type="button" data-id="' + esc(id) + '" data-name-en="' + esc(it.nameEn) + '" data-name-fr="' + esc(it.nameFr) + '" data-price-cents="' + it.cents + '"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button>';

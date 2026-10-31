@@ -386,6 +386,25 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   .footer-map{margin:0 0 24px}
   .footer-map p{font-weight:700;margin:0 0 12px}
   .footer-map iframe{width:100%;height:280px;border:0;border-radius:14px;display:block}
+  .test-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-sm);padding:34px 32px;max-width:860px;margin:0 auto}
+  @media (max-width:560px){.test-card{padding:24px 18px}}
+  .test-card .field{margin-bottom:16px}
+  .test-card .field label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+  .test-card .field input,.test-card .field textarea{width:100%;font:inherit;font-size:16px;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}
+  .test-card .field input:focus,.test-card .field textarea:focus{outline:2px solid var(--violet);outline-offset:1px}
+  .test-card h2{font-size:clamp(23px,3vw,30px);font-weight:800;margin-top:34px}
+  .test-card h2:first-of-type{margin-top:8px}
+  .section-header{background:var(--surface-2);color:var(--violet-deep);border-radius:12px;padding:11px 16px;margin:26px 0 6px;font-family:"Sora",sans-serif}
+  .question-block{padding:14px 2px;border-bottom:1px solid var(--line)}
+  .question-block p{font-weight:600;margin-bottom:9px}
+  .question-block label{display:block;padding:7px 10px;border-radius:9px;cursor:pointer;font-size:16px}
+  .question-block label:hover{background:var(--bg-tint)}
+  .question-block input[type="radio"]{margin-right:9px;accent-color:var(--violet)}
+  .reading-text{background:var(--bg-tint);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0 6px;color:var(--ink)}
+  .test-submit{width:100%;margin-top:28px}
+  .result-box{display:none;margin-top:28px;padding:26px;background:var(--good-soft);border:2px solid var(--good);border-radius:16px;text-align:center}
+  .result-box .r-score{font-size:20px}
+  .result-box .r-level{font-size:clamp(26px,4vw,34px);color:var(--good);font-family:"Sora",sans-serif;font-weight:800;margin:6px 0}
 </style>
 </head>
 <body>
@@ -426,11 +445,308 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
     <section class="hero">
       <div class="wrap">
         <h1><span class="t-en">Placement Test</span><span class="t-fr">Test de placement</span></h1>
-        <p class="lede"><span class="t-en">This placement test is restricted and requires access from the institute.</span><span class="t-fr">Ce test de placement est restreint et nécessite un accès fourni par l'institut.</span></p>
-        <p class="lede"><span class="t-en">To request access, please contact the institute.</span><span class="t-fr">Pour demander un accès, veuillez contacter l'institut.</span></p>
-        <div class="hero-ctas">
-          <a class="btn btn-violet" href="book-a-consultation.html"><span class="t-en">Book a free consultation</span><span class="t-fr">Réservez une consultation gratuite</span></a>
-          <a class="btn btn-ghost" href="mailto:admin@verballinkinstitute.ca"><span class="t-en">Contact us by email</span><span class="t-fr">Contactez-nous par courriel</span></a>
+        <p class="lede"><span class="t-en">Find your French level in about 15 minutes. Answer the 32 questions, write a short presentation, and your result appears right away. A copy is sent to the institute so we can recommend the right course.</span><span class="t-fr">Découvrez votre niveau de français en environ 15 minutes. Répondez aux 32 questions, écrivez une courte présentation, et votre résultat apparaît tout de suite. Une copie est envoyée à l'institut pour que nous puissions vous recommander le bon cours.</span></p>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="test-card">
+          <form id="placementTestForm" action="https://formsubmit.co/williams.a@verballinkinstitute.ca" method="POST">
+            <input type="hidden" name="_subject" value="Placement Test Result - VLI">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="Score" id="scoreField">
+            <input type="hidden" name="Level" id="levelField">
+            <input type="hidden" name="Date" id="dateField">
+            <input type="hidden" name="Time" id="timeField">
+
+            <div class="field">
+              <label for="pt-name"><span class="t-en">Name</span><span class="t-fr">Nom</span></label>
+              <input id="pt-name" type="text" name="Name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="pt-email"><span class="t-en">Email</span><span class="t-fr">Courriel</span></label>
+              <input id="pt-email" type="email" name="Email" autocomplete="email" required>
+            </div>
+
+            <h2><span class="t-en">Section 1: Grammar and Vocabulary</span><span class="t-fr">Section 1 : Grammaire et vocabulaire</span></h2>
+
+            <div class="section-header"><strong><span class="t-en">Part 1: Beginner Level (A1)</span><span class="t-fr">Partie 1 : Niveau débutant (A1)</span></strong></div>
+
+            <div class="question-block">
+              <p>1. « Bonjour ! Comment ça va ? »</p>
+              <label><input type="radio" name="q1" value="0" required> A) Au revoir.</label>
+              <label><input type="radio" name="q1" value="1"> B) Ça va bien, merci !</label>
+              <label><input type="radio" name="q1" value="0"> C) Enchanté.</label>
+              <label><input type="radio" name="q1" value="0"> D) S'il vous plaît.</label>
+            </div>
+
+            <div class="question-block">
+              <p>2. J'aime _______ cinéma et la musique.</p>
+              <label><input type="radio" name="q2" value="0" required> A) la</label>
+              <label><input type="radio" name="q2" value="0"> B) les</label>
+              <label><input type="radio" name="q2" value="1"> C) le</label>
+              <label><input type="radio" name="q2" value="0"> D) l'</label>
+            </div>
+
+            <div class="question-block">
+              <p>3. Ils _______ canadiens.</p>
+              <label><input type="radio" name="q3" value="1" required> A) sont</label>
+              <label><input type="radio" name="q3" value="0"> B) êtes</label>
+              <label><input type="radio" name="q3" value="0"> C) sommes</label>
+              <label><input type="radio" name="q3" value="0"> D) ont</label>
+            </div>
+
+            <div class="question-block">
+              <p>4. C'est la voiture de Marie. C'est _______ voiture.</p>
+              <label><input type="radio" name="q4" value="0" required> A) mon</label>
+              <label><input type="radio" name="q4" value="0"> B) sa</label>
+              <label><input type="radio" name="q4" value="1"> C) son</label>
+              <label><input type="radio" name="q4" value="0"> D) leur</label>
+            </div>
+
+            <div class="question-block">
+              <p>5. Il est 14h30.</p>
+              <label><input type="radio" name="q5" value="1" required> A) Il est deux heures et demie de l'après-midi.</label>
+              <label><input type="radio" name="q5" value="0"> B) Il est quatre heures moins le quart.</label>
+              <label><input type="radio" name="q5" value="0"> C) Il est deux heures quinze.</label>
+              <label><input type="radio" name="q5" value="0"> D) Il est midi et demi.</label>
+            </div>
+
+            <div class="section-header"><strong><span class="t-en">Part 2: Elementary Level (A2)</span><span class="t-fr">Partie 2 : Niveau élémentaire (A2)</span></strong></div>
+
+            <div class="question-block">
+              <p>6. Hier, nous _______ un bon film au cinéma.</p>
+              <label><input type="radio" name="q6" value="0" required> A) voyons</label>
+              <label><input type="radio" name="q6" value="1"> B) avons vu</label>
+              <label><input type="radio" name="q6" value="0"> C) sommes vu</label>
+              <label><input type="radio" name="q6" value="0"> D) avons voir</label>
+            </div>
+
+            <div class="question-block">
+              <p>7. Je parle à mon directeur → Je _______ parle.</p>
+              <label><input type="radio" name="q7" value="0" required> A) le</label>
+              <label><input type="radio" name="q7" value="1"> B) lui</label>
+              <label><input type="radio" name="q7" value="0"> C) la</label>
+              <label><input type="radio" name="q7" value="0"> D) leur</label>
+            </div>
+
+            <div class="question-block">
+              <p>8. Demain, elle _______ voyager à Paris.</p>
+              <label><input type="radio" name="q8" value="1" required> A) va</label>
+              <label><input type="radio" name="q8" value="0"> B) veut</label>
+              <label><input type="radio" name="q8" value="0"> C) vient</label>
+              <label><input type="radio" name="q8" value="0"> D) a</label>
+            </div>
+
+            <div class="question-block">
+              <p>9. J'habite _______ Canada, mais je travaille _______ France.</p>
+              <label><input type="radio" name="q9" value="0" required> A) en / au</label>
+              <label><input type="radio" name="q9" value="1"> B) au / en</label>
+              <label><input type="radio" name="q9" value="0"> C) à / en</label>
+              <label><input type="radio" name="q9" value="0"> D) au / à</label>
+            </div>
+
+            <div class="question-block">
+              <p>10. Le matin, je bois _______ café et je mange _______ confiture.</p>
+              <label><input type="radio" name="q10" value="1" required> A) du / de la</label>
+              <label><input type="radio" name="q10" value="0"> B) de la / du</label>
+              <label><input type="radio" name="q10" value="0"> C) le / la</label>
+              <label><input type="radio" name="q10" value="0"> D) un / une</label>
+            </div>
+
+            <div class="section-header"><strong><span class="t-en">Part 3: Intermediate Level (B1)</span><span class="t-fr">Partie 3 : Niveau intermédiaire (B1)</span></strong></div>
+
+            <div class="question-block">
+              <p>11. Quand j'_______ jeune, je _______ souvent au football.</p>
+              <label><input type="radio" name="q11" value="0" required> A) ai été / jouais</label>
+              <label><input type="radio" name="q11" value="0"> B) étais / ai joué</label>
+              <label><input type="radio" name="q11" value="1"> C) étais / jouais</label>
+              <label><input type="radio" name="q11" value="0"> D) suis / joue</label>
+            </div>
+
+            <div class="question-block">
+              <p>12. C'est l'entreprise _______ je t'ai parlé hier.</p>
+              <label><input type="radio" name="q12" value="0" required> A) que</label>
+              <label><input type="radio" name="q12" value="0"> B) qui</label>
+              <label><input type="radio" name="q12" value="1"> C) dont</label>
+              <label><input type="radio" name="q12" value="0"> D) où</label>
+            </div>
+
+            <div class="question-block">
+              <p>13. Si j'avais le temps, je _______ une formation de français.</p>
+              <label><input type="radio" name="q13" value="0" required> A) ferai</label>
+              <label><input type="radio" name="q13" value="1"> B) ferais</label>
+              <label><input type="radio" name="q13" value="0"> C) fais</label>
+              <label><input type="radio" name="q13" value="0"> D) fisse</label>
+            </div>
+
+            <div class="question-block">
+              <p>14. Il y a des réunions aujourd'hui ? Oui, il _______ a trois.</p>
+              <label><input type="radio" name="q14" value="1" required> A) en</label>
+              <label><input type="radio" name="q14" value="0"> B) y</label>
+              <label><input type="radio" name="q14" value="0"> C) les</label>
+              <label><input type="radio" name="q14" value="0"> D) leur</label>
+            </div>
+
+            <div class="question-block">
+              <p>15. Je _______ parle _______ anglais au bureau, jamais espagnol.</p>
+              <label><input type="radio" name="q15" value="0" required> A) ne ... pas</label>
+              <label><input type="radio" name="q15" value="0"> B) ne ... plus</label>
+              <label><input type="radio" name="q15" value="1"> C) ne ... que</label>
+              <label><input type="radio" name="q15" value="0"> D) ne ... rien</label>
+            </div>
+
+            <div class="section-header"><strong><span class="t-en">Part 4: Upper-Intermediate Level (B2)</span><span class="t-fr">Partie 4 : Niveau intermédiaire supérieur (B2)</span></strong></div>
+
+            <div class="question-block">
+              <p>16. Il faut que vous _______ ce rapport avant ce soir.</p>
+              <label><input type="radio" name="q16" value="0" required> A) finissez</label>
+              <label><input type="radio" name="q16" value="1"> B) finissiez</label>
+              <label><input type="radio" name="q16" value="0"> C) finirez</label>
+              <label><input type="radio" name="q16" value="0"> D) finissez</label>
+            </div>
+
+            <div class="question-block">
+              <p>17. _______ ses efforts, le projet a pris du retard.</p>
+              <label><input type="radio" name="q17" value="1" required> A) Malgré</label>
+              <label><input type="radio" name="q17" value="0"> B) Bien que</label>
+              <label><input type="radio" name="q17" value="0"> C) Parce que</label>
+              <label><input type="radio" name="q17" value="0"> D) Pourtant</label>
+            </div>
+
+            <div class="question-block">
+              <p>18. Je _______ envoyé.</p>
+              <label><input type="radio" name="q18" value="0" required> A) lui l'ai envoyé</label>
+              <label><input type="radio" name="q18" value="0"> B) l'lui ai envoyé</label>
+              <label><input type="radio" name="q18" value="1"> C) le lui ai envoyé</label>
+              <label><input type="radio" name="q18" value="0"> D) lui ai envoyé le</label>
+            </div>
+
+            <div class="question-block">
+              <p>19. Cette décision _______ par la direction générale la semaine dernière.</p>
+              <label><input type="radio" name="q19" value="1" required> A) a été prise</label>
+              <label><input type="radio" name="q19" value="0"> B) est prise</label>
+              <label><input type="radio" name="q19" value="0"> C) avait pris</label>
+              <label><input type="radio" name="q19" value="0"> D) sera prise</label>
+            </div>
+
+            <div class="question-block">
+              <p>20. Pour postuler à ce poste, vous devez envoyer votre _______.</p>
+              <label><input type="radio" name="q20" value="0" required> A) lettre de rupture</label>
+              <label><input type="radio" name="q20" value="1"> B) curriculum vitae</label>
+              <label><input type="radio" name="q20" value="0"> C) contrat de travail</label>
+              <label><input type="radio" name="q20" value="0"> D) bulletin de paie</label>
+            </div>
+
+            <div class="section-header"><strong><span class="t-en">Part 5: Advanced Level (C1)</span><span class="t-fr">Partie 5 : Niveau avancé (C1)</span></strong></div>
+
+            <div class="question-block">
+              <p>21. Je regrette qu'il _______ son ordinateur avant la panne de courant.</p>
+              <label><input type="radio" name="q21" value="1" required> A) n'ait pas sauvegardé</label>
+              <label><input type="radio" name="q21" value="0"> B) ne sauvegardât pas</label>
+              <label><input type="radio" name="q21" value="0"> C) n'avait pas sauvegardé</label>
+              <label><input type="radio" name="q21" value="0"> D) ne sauvegarde pas</label>
+            </div>
+
+            <div class="question-block">
+              <p>22. C'est une crise majeure, _______ nous devons trouver une solution immédiate.</p>
+              <label><input type="radio" name="q22" value="0" required> A) à laquelle</label>
+              <label><input type="radio" name="q22" value="1"> B) pour laquelle</label>
+              <label><input type="radio" name="q22" value="0"> C) de laquelle</label>
+              <label><input type="radio" name="q22" value="0"> D) laquelle</label>
+            </div>
+
+            <div class="question-block">
+              <p>23. « Chercher midi à quatorze heures » signifie :</p>
+              <label><input type="radio" name="q23" value="0" required> A) Être en retard</label>
+              <label><input type="radio" name="q23" value="1"> B) Compliquer inutilement</label>
+              <label><input type="radio" name="q23" value="0"> C) Changer d'avis</label>
+              <label><input type="radio" name="q23" value="0"> D) Annuler la réunion</label>
+            </div>
+
+            <h2><span class="t-en">Section 2: Reading Comprehension</span><span class="t-fr">Section 2 : Compréhension écrite</span></h2>
+
+            <p style="margin-top:14px"><strong><span class="t-en">Text 1 (A2 to B1)</span><span class="t-fr">Texte 1 (A2 à B1)</span></strong></p>
+            <div class="reading-text">
+              <p>Sophie est infirmière dans un grand hôpital à Montréal. Elle travaille souvent de longues heures et doit gérer des situations parfois urgentes. Malgré la fatigue, elle apprécie son métier car elle aide les patients à se rétablir. Elle essaie de maintenir un équilibre entre sa vie professionnelle et personnelle en faisant du sport et en passant du temps avec sa famille.</p>
+            </div>
+
+            <div class="question-block">
+              <p>24. Où travaille Sophie ?</p>
+              <label><input type="radio" name="q24" value="1" required> À l'hôpital</label>
+              <label><input type="radio" name="q24" value="0"> À l'école</label>
+            </div>
+
+            <div class="question-block">
+              <p>25. Pourquoi aime-t-elle son travail ?</p>
+              <label><input type="radio" name="q25" value="1" required> Elle aide les patients</label>
+              <label><input type="radio" name="q25" value="0"> Elle travaille moins</label>
+            </div>
+
+            <div class="question-block">
+              <p>26. Comment garde-t-elle l'équilibre ?</p>
+              <label><input type="radio" name="q26" value="1" required> Sport et famille</label>
+              <label><input type="radio" name="q26" value="0"> Elle ne travaille pas</label>
+            </div>
+
+            <p style="margin-top:22px"><strong><span class="t-en">Text 2 (B2)</span><span class="t-fr">Texte 2 (B2)</span></strong></p>
+            <div class="reading-text">
+              <p>Le télétravail s'est fortement développé ces dernières années. Il offre plus de flexibilité et réduit les déplacements, mais il peut aussi provoquer de l'isolement et rendre difficile la séparation entre vie professionnelle et vie privée.</p>
+            </div>
+
+            <div class="question-block">
+              <p>27. Avantage du télétravail ?</p>
+              <label><input type="radio" name="q27" value="1" required> Flexibilité</label>
+              <label><input type="radio" name="q27" value="0"> Plus de transport</label>
+            </div>
+
+            <div class="question-block">
+              <p>28. Problème principal ?</p>
+              <label><input type="radio" name="q28" value="1" required> Isolement</label>
+              <label><input type="radio" name="q28" value="0"> Trop de vacances</label>
+            </div>
+
+            <div class="question-block">
+              <p>29. Difficulté personnelle ?</p>
+              <label><input type="radio" name="q29" value="1" required> Frontière floue</label>
+              <label><input type="radio" name="q29" value="0"> Trop de réunions</label>
+            </div>
+
+            <p style="margin-top:22px"><strong><span class="t-en">Text 3 (C1)</span><span class="t-fr">Texte 3 (C1)</span></strong></p>
+            <div class="reading-text">
+              <p>L'intelligence artificielle améliore la communication mondiale, mais elle ne peut pas remplacer la compréhension humaine des nuances culturelles, de l'ironie et du contexte.</p>
+            </div>
+
+            <div class="question-block">
+              <p>30. Que fait l'IA ?</p>
+              <label><input type="radio" name="q30" value="1" required> Facilite communication</label>
+              <label><input type="radio" name="q30" value="0"> Remplace enseignants</label>
+            </div>
+
+            <div class="question-block">
+              <p>31. Limite de l'IA ?</p>
+              <label><input type="radio" name="q31" value="1" required> Nuances culturelles</label>
+              <label><input type="radio" name="q31" value="0"> Vitesse</label>
+            </div>
+
+            <div class="question-block">
+              <p>32. Pourquoi la langue est importante ?</p>
+              <label><input type="radio" name="q32" value="1" required> Confiance</label>
+              <label><input type="radio" name="q32" value="0"> Divertissement</label>
+            </div>
+
+            <h2><span class="t-en">Section 3: Writing</span><span class="t-fr">Section 3 : Expression écrite</span></h2>
+
+            <div class="field" style="margin-top:16px">
+              <label for="pt-writing">33. <span class="t-en">Introduce yourself (80 to 120 words)</span><span class="t-fr">Présentez-vous (80 à 120 mots)</span></label>
+              <textarea id="pt-writing" name="writing" rows="6" required></textarea>
+            </div>
+
+            <button class="btn btn-gold test-submit" type="submit" id="ptSubmit"><span class="t-en">Submit test</span><span class="t-fr">Envoyer le test</span></button>
+          </form>
+
+          <div class="result-box" id="resultBox"></div>
         </div>
       </div>
     </section>
@@ -525,6 +841,49 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
 })();
 </script>
 <script>(function(){var l='en';try{l=localStorage.getItem('vl-lang')||'en';}catch(e){}if(l!=='fr'){l='en';}document.documentElement.lang=l;if(l==='fr'){document.title='Test de placement | Verbal Link Institute';document.querySelectorAll('[data-label-fr]').forEach(function(el){el.setAttribute('aria-label',el.getAttribute('data-label-fr'));});document.querySelectorAll('[data-alt-fr]').forEach(function(el){el.setAttribute('alt',el.getAttribute('data-alt-fr'));});}else{document.title='Placement Test | Verbal Link Institute';}})();</script>
+<script>
+(function(){
+  var form = document.getElementById("placementTestForm");
+  if (!form) return;
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    var score = 0;
+    for (var i = 1; i <= 32; i++){
+      var selected = document.querySelector('input[name="q' + i + '"]:checked');
+      if (selected) score += parseInt(selected.value, 10);
+    }
+    var level = "";
+    if (score <= 10) level = "A1 (Beginner)";
+    else if (score <= 18) level = "A2 (Elementary)";
+    else if (score <= 24) level = "B1 (Intermediate)";
+    else if (score <= 28) level = "B2 (Upper Intermediate)";
+    else level = "C1 (Advanced)";
+    var now = new Date();
+    document.getElementById("scoreField").value = score + "/32";
+    document.getElementById("levelField").value = level;
+    document.getElementById("dateField").value = now.toLocaleDateString();
+    document.getElementById("timeField").value = now.toLocaleTimeString();
+    var fr = document.documentElement.lang === "fr";
+    var resultBox = document.getElementById("resultBox");
+    resultBox.style.display = "block";
+    resultBox.innerHTML =
+      '<h2>' + (fr ? "Votre niveau de français" : "Your French Placement Result") + '</h2>' +
+      '<p class="r-score"><strong>Score:</strong> ' + score + '/32</p>' +
+      '<p class="r-level">' + level + '</p>' +
+      '<p>' + (fr ? "Votre test a bien été envoyé à Verbal Link Institute." : "Your results have been submitted successfully to Verbal Link Institute.") + '</p>';
+    resultBox.scrollIntoView({ behavior: "smooth" });
+    var submitBtn = document.getElementById("ptSubmit");
+    submitBtn.disabled = true;
+    submitBtn.textContent = fr ? "Envoi en cours..." : "Submitting...";
+    try {
+      var response = await fetch(form.action, { method: "POST", body: new FormData(form) });
+      submitBtn.textContent = response.ok ? (fr ? "Envoyé avec succès" : "Submitted Successfully") : (fr ? "Erreur d'envoi" : "Submission Error");
+    } catch (err) {
+      submitBtn.textContent = fr ? "Erreur réseau" : "Network Error";
+    }
+  });
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a95bf5e079a9427b98c89300cf911892"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

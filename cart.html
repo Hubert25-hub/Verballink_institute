@@ -12,21 +12,21 @@
 <style>
   :root{
     --bg:#FFFFFF;
-    --bg-tint:#FAF8FC;
+    --bg-tint:#F5F8FB;
     --surface:#FFFFFF;
-    --surface-2:#F3EEFA;
-    --ink:#251239;
-    --ink-soft:#57496E;
-    --line:#E4DCF2;
-    --violet:#5B3A8E;
-    --violet-deep:#3E2566;
-    --gold:#E8A020;
-    --gold-ink:#7A5200;
-    --gold-soft:#FDF3DC;
+    --surface-2:#E9F0F8;
+    --ink:#0C2237;
+    --ink-soft:#49596D;
+    --line:#D8E2EE;
+    --violet:#0A3D6E;
+    --violet-deep:#062A4C;
+    --gold:#1FA038;
+    --gold-ink:#14652C;
+    --gold-soft:#E6F4EA;
     --good:#1E7A46;
     --good-soft:#E4F4EA;
-    --shadow:0 18px 44px rgba(46,25,84,.14);
-    --shadow-sm:0 6px 18px rgba(46,25,84,.10);
+    --shadow:0 18px 44px rgba(10,45,86,.14);
+    --shadow-sm:0 6px 18px rgba(10,45,86,.10);
     color-scheme:light;
   }
   *{box-sizing:border-box}
@@ -60,7 +60,7 @@
     min-height:52px;text-align:center;
   }
   .btn:active{transform:scale(.98)}
-  .btn-gold{background:var(--gold);color:var(--gold-ink);box-shadow:0 10px 24px rgba(232,160,32,.35)}
+  .btn-gold{background:var(--gold);color:#fff;box-shadow:0 10px 24px rgba(31,160,56,.35)}
   .btn-gold:hover{transform:translateY(-2px)}
   .btn-violet{background:var(--violet);color:#fff;box-shadow:var(--shadow-sm)}
   .btn-violet:hover{transform:translateY(-2px)}
@@ -102,7 +102,7 @@
     border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 10px;
     font-size:14px;font-weight:600;color:var(--ink-soft);box-shadow:var(--shadow-sm);
   }
-  .hero-badge .dot{width:22px;height:22px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:#3A2A00;font-size:11px;font-weight:800}
+  .hero-badge .dot{width:22px;height:22px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:#FFFFFF;font-size:11px;font-weight:800}
   .hero h1{font-size:clamp(36px,5vw,56px);font-weight:800;letter-spacing:-.015em;margin:22px 0 18px}
   .hero h1 .hl{color:var(--violet);box-shadow:inset 0 -0.32em 0 var(--gold-soft);border-radius:2px}
   .hero .lede{font-size:19px;color:var(--ink-soft);max-width:540px}
@@ -270,7 +270,7 @@
 
   /* lightbox */
   .lightbox{
-    position:fixed;inset:0;z-index:90;background:rgba(28,14,52,.82);
+    position:fixed;inset:0;z-index:90;background:rgba(7,28,52,.82);
     display:none;align-items:center;justify-content:center;padding:20px;
   }
   .lightbox.open{display:flex}
@@ -343,7 +343,7 @@
   .mobilebar{
     display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
     background:var(--surface);border-top:1px solid var(--line);
-    box-shadow:0 -6px 18px rgba(46,25,84,.08);
+    box-shadow:0 -6px 18px rgba(10,45,86,.08);
     padding-bottom:env(safe-area-inset-bottom);
   }
   .mobilebar a{
@@ -384,7 +384,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   .shop-card .detail{color:var(--ink-soft);margin-top:10px;font-size:15.5px;flex:1}
   .shop-card .price{font-family:"Sora",sans-serif;font-weight:800;font-size:26px;color:var(--violet);margin-top:auto;padding-top:18px}
   .shop-card .btn{margin-top:18px;align-self:flex-start}
-  .cover-tile{border-radius:16px;background:linear-gradient(135deg,#F4EFFC,#E9DEF8);border:1px solid var(--line);min-height:210px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;overflow:hidden}
+  .cover-tile{border-radius:16px;background:linear-gradient(135deg,#EDF3F9,#DCE9F5);border:1px solid var(--line);min-height:210px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;overflow:hidden}
   .cover-tile svg{width:120px;height:120px;flex-shrink:0}
   .cta-band{background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
   .cta-band h2{font-size:clamp(28px,3.6vw,40px);font-weight:800}
@@ -393,12 +393,12 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
 <style>
   .cart-btn{display:inline-flex;align-items:center;gap:8px;align-self:center;position:relative;background:var(--surface);color:var(--violet);border:2px solid var(--violet);border-radius:12px;padding:11px 16px;font-family:"Sora",sans-serif;font-weight:700;font-size:15px;cursor:pointer;flex-shrink:0;text-decoration:none}
   .cart-btn svg{width:20px;height:20px}
-  .cart-count{display:none;min-width:22px;height:22px;border-radius:11px;background:var(--gold);color:#3A2A00;font-size:13px;font-weight:800;align-items:center;justify-content:center;padding:0 5px}
+  .cart-count{display:none;min-width:22px;height:22px;border-radius:11px;background:var(--gold);color:#FFFFFF;font-size:13px;font-weight:800;align-items:center;justify-content:center;padding:0 5px}
   .cart-count.show{display:inline-flex}
   .shop-actions{display:flex;gap:10px;margin-top:18px;align-self:flex-start;align-items:stretch}
   .shop-actions .btn{margin-top:0}
   .wish-btn{min-width:52px;border-radius:12px;border:2px solid var(--violet);background:var(--violet);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0 12px}
-  .wish-btn.saved{background:var(--gold);border-color:var(--gold);color:#3A2A00}
+  .wish-btn.saved{background:var(--gold);border-color:var(--gold);color:#FFFFFF}
   @media (max-width:520px){ header.site .wrap{gap:12px} .cart-btn{padding:10px 12px;font-size:14px} }
 
 
@@ -416,7 +416,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   .pay-badges{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 12px}
   .pay-badge{display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--line);border-radius:8px;background:#fff;padding:8px 14px;min-height:44px;box-sizing:border-box}
   .pay-badge svg{height:28px;width:auto;display:block}
-  .book-mini{flex-shrink:0;width:70px;height:98px;border-radius:2px 6px 6px 2px;background:linear-gradient(135deg,var(--violet-deep),var(--violet));color:#fff;padding:9px 7px 9px 13px;display:flex;flex-direction:column;gap:3px;box-shadow:3px 4px 10px rgba(37,18,57,.25);position:relative;overflow:hidden}
+  .book-mini{flex-shrink:0;width:70px;height:98px;border-radius:2px 6px 6px 2px;background:linear-gradient(135deg,var(--violet-deep),var(--violet));color:#fff;padding:9px 7px 9px 13px;display:flex;flex-direction:column;gap:3px;box-shadow:3px 4px 10px rgba(8,35,64,.25);position:relative;overflow:hidden}
   .book-mini::before{content:"";position:absolute;left:5px;top:0;bottom:0;width:3px;background:rgba(0,0,0,.28);box-shadow:1px 0 0 rgba(255,255,255,.22)}
   .book-mini-title{font-size:10px;font-weight:800;line-height:1.25}
   .book-mini-sub{font-size:8px;font-weight:700;color:var(--gold)}
@@ -504,26 +504,26 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
     </div>
     <div class="shop-grid">
       <article class="shop-card">
-        <div class="cover-tile" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#5B3A8E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="20" width="60" height="82" rx="8"/><rect x="46" y="12" width="28" height="14" rx="7" fill="#E8A020" stroke="none"/><path d="M44 60 L54 70 L78 44" stroke="#E8A020" stroke-width="5"/><path d="M44 82 h32" opacity=".45"/></svg></div>
+        <div class="cover-tile" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#0A3D6E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="20" width="60" height="82" rx="8"/><rect x="46" y="12" width="28" height="14" rx="7" fill="#1FA038" stroke="none"/><path d="M44 60 L54 70 L78 44" stroke="#1FA038" stroke-width="5"/><path d="M44 82 h32" opacity=".45"/></svg></div>
         <h3><a href="shop.html#assessment-fees"><span class="t-en">Assessment fees</span><span class="t-fr">Frais d’évaluation</span></a></h3>
         <p class="price"><span class="t-en">$105.58</span><span class="t-fr">105,58 $</span></p>
         <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="assessment-fees" data-name-en="Assessment fees" data-name-fr="Frais d’évaluation" data-price-cents="10558"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="assessment-fees" data-name-en="Assessment fees" data-name-fr="Frais d’évaluation" data-price-cents="10558" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card">
-        <div class="cover-tile" aria-hidden="true"><svg viewBox="0 0 120 120"><rect x="14" y="54" width="30" height="30" rx="6" fill="#5B3A8E"/><rect x="45" y="38" width="30" height="30" rx="6" fill="#E8A020"/><rect x="76" y="54" width="30" height="30" rx="6" fill="#5B3A8E" opacity=".75"/><text x="29" y="76" text-anchor="middle" font-size="20" font-weight="800" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif">A</text><text x="60" y="60" text-anchor="middle" font-size="20" font-weight="800" fill="#3A2A00" font-family="Arial, Helvetica, sans-serif">B</text><text x="91" y="76" text-anchor="middle" font-size="20" font-weight="800" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif">C</text></svg></div>
+        <div class="cover-tile" aria-hidden="true"><svg viewBox="0 0 120 120"><rect x="14" y="54" width="30" height="30" rx="6" fill="#0A3D6E"/><rect x="45" y="38" width="30" height="30" rx="6" fill="#1FA038"/><rect x="76" y="54" width="30" height="30" rx="6" fill="#0A3D6E" opacity=".75"/><text x="29" y="76" text-anchor="middle" font-size="20" font-weight="800" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif">A</text><text x="60" y="60" text-anchor="middle" font-size="20" font-weight="800" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif">B</text><text x="91" y="76" text-anchor="middle" font-size="20" font-weight="800" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif">C</text></svg></div>
         <h3><a href="shop.html#french-classes-kids"><span class="t-en">French Classes for Kids (Home & Online Service)</span><span class="t-fr">Cours de français pour enfants (service à domicile et en ligne)</span></a></h3>
   <p class="detail"><span class="t-en">Ages 5 to 14, at home and online</span><span class="t-fr">De 5 à 14 ans, à domicile et en ligne</span></p>
         <p class="price"><span class="t-en">$450.00</span><span class="t-fr">450,00 $</span></p>
         <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="french-classes-kids" data-name-en="French Classes for Kids (Home &amp; Online Service)" data-name-fr="Cours de français pour enfants (service à domicile et en ligne)" data-price-cents="45000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="french-classes-kids" data-name-en="French Classes for Kids (Home &amp; Online Service)" data-name-fr="Cours de français pour enfants (service à domicile et en ligne)" data-price-cents="45000" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card">
-        <div class="cover-tile" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#5B3A8E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="14" width="52" height="92" rx="8"/><path d="M36 30 h28 M36 44 h28 M36 58 h20" opacity=".55"/><path d="M40 76 l6 6 12-14" stroke="#E8A020" stroke-width="5"/><g transform="rotate(38 92 62)"><rect x="86" y="28" width="12" height="52" rx="3" fill="#E8A020" stroke="none"/><path d="M86 80 L92 94 L98 80 Z" fill="#5B3A8E" stroke="none"/></g></svg></div>
+        <div class="cover-tile" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#0A3D6E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="14" width="52" height="92" rx="8"/><path d="M36 30 h28 M36 44 h28 M36 58 h20" opacity=".55"/><path d="M40 76 l6 6 12-14" stroke="#1FA038" stroke-width="5"/><g transform="rotate(38 92 62)"><rect x="86" y="28" width="12" height="52" rx="3" fill="#1FA038" stroke="none"/><path d="M86 80 L92 94 L98 80 Z" fill="#0A3D6E" stroke="none"/></g></svg></div>
         <h3><a href="shop.html#french-exam-a1-a2"><span class="t-en">French exam Preparation (80 hours) A1-A2</span><span class="t-fr">Préparation à l’examen de français (80 heures) A1-A2</span></a></h3>
         <p class="price"><span class="t-en">$535.00</span><span class="t-fr">535,00 $</span></p>
         <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="french-exam-a1-a2" data-name-en="French exam Preparation (80 hours) A1-A2" data-name-fr="Préparation à l’examen de français (80 heures) A1-A2" data-price-cents="53500"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="french-exam-a1-a2" data-name-en="French exam Preparation (80 hours) A1-A2" data-name-fr="Préparation à l’examen de français (80 heures) A1-A2" data-price-cents="53500" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>
       </article>
       <article class="shop-card">
-        <div class="cover-tile" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#5B3A8E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 46 L60 22 L100 46"/><path d="M28 46 v34 M48 46 v34 M72 46 v34 M92 46 v34" opacity=".9"/><path d="M22 88 h76 M28 96 h64"/><path d="M60 22 V10"/><path d="M60 10 h17 l-4 6 4 6 H60 Z" fill="#E8A020" stroke="none"/></svg></div>
+        <div class="cover-tile" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#0A3D6E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 46 L60 22 L100 46"/><path d="M28 46 v34 M48 46 v34 M72 46 v34 M92 46 v34" opacity=".9"/><path d="M22 88 h76 M28 96 h64"/><path d="M60 22 V10"/><path d="M60 10 h17 l-4 6 4 6 H60 Z" fill="#1FA038" stroke="none"/></svg></div>
         <h3><a href="shop.html#french-exam-public-servants"><span class="t-en">French Exam Preparation for Public Servants</span><span class="t-fr">Préparation à l’examen de français pour fonctionnaires</span></a></h3>
         <p class="price"><span class="t-en">$690.00</span><span class="t-fr">690,00 $</span></p>
         <div class="shop-actions"><button class="btn btn-violet add-to-cart" type="button" data-id="french-exam-public-servants" data-name-en="French Exam Preparation for Public Servants" data-name-fr="Préparation à l’examen de français pour fonctionnaires" data-price-cents="69000"><span class="t-en">Add to cart</span><span class="t-fr">Ajouter au panier</span></button><button class="wish-btn" type="button" data-id="french-exam-public-servants" data-name-en="French Exam Preparation for Public Servants" data-name-fr="Préparation à l’examen de français pour fonctionnaires" data-price-cents="69000" aria-label="Save to wishlist" data-label-fr="Sauvegarder dans la liste de souhaits">♡</button></div>

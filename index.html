@@ -12,24 +12,24 @@
 <style>
   :root{
     --bg:#FFFFFF;
-    --bg-tint:#FAF8FC;
+    --bg-tint:#F5F8FB;
     --surface:#FFFFFF;
-    --surface-2:#F3EEFA;
-    --ink:#251239;
-    --ink-soft:#57496E;
-    --line:#E4DCF2;
-    --violet:#5B3A8E;
-    --violet-deep:#3E2566;
-    --violet-ink:#2A1847;
-    --gold:#E8A020;
-    --gold-ink:#7A5200;
-    --gold-soft:#FDF3DC;
+    --surface-2:#E9F0F8;
+    --ink:#0C2237;
+    --ink-soft:#49596D;
+    --line:#D8E2EE;
+    --violet:#0A3D6E;
+    --violet-deep:#062A4C;
+    --violet-ink:#0A2A4A;
+    --gold:#1FA038;
+    --gold-ink:#14652C;
+    --gold-soft:#E6F4EA;
     --good:#1E7A46;
     --good-soft:#E4F4EA;
     --bad:#B3372F;
     --bad-soft:#FBE9E7;
-    --shadow:0 18px 44px rgba(46,25,84,.14);
-    --shadow-sm:0 6px 18px rgba(46,25,84,.10);
+    --shadow:0 18px 44px rgba(10,45,86,.14);
+    --shadow-sm:0 6px 18px rgba(10,45,86,.10);
     color-scheme:light;
   }
   *{box-sizing:border-box}
@@ -63,7 +63,7 @@
     min-height:52px;text-align:center;
   }
   .btn:active{transform:scale(.98)}
-  .btn-gold{background:var(--gold);color:var(--gold-ink);box-shadow:0 10px 24px rgba(232,160,32,.35)}
+  .btn-gold{background:var(--gold);color:#fff;box-shadow:0 10px 24px rgba(31,160,56,.35)}
   .btn-gold:hover{transform:translateY(-2px)}
   .btn-violet{background:var(--violet);color:#fff;box-shadow:var(--shadow-sm)}
   .btn-violet:hover{transform:translateY(-2px)}
@@ -108,7 +108,7 @@
     border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 10px;
     font-size:14px;font-weight:600;color:var(--ink-soft);box-shadow:var(--shadow-sm);
   }
-  .hero-badge .dot{width:22px;height:22px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:#3A2A00;font-size:12px;font-weight:800}
+  .hero-badge .dot{width:22px;height:22px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:#FFFFFF;font-size:12px;font-weight:800}
   .hero h1{font-size:clamp(38px,5.2vw,58px);font-weight:800;letter-spacing:-.015em;margin:22px 0 18px}
   .hero h1 .hl{color:var(--violet);box-shadow:inset 0 -0.32em 0 var(--gold-soft);border-radius:2px}
   .hero .lede{font-size:19px;color:var(--ink-soft);max-width:520px}
@@ -281,7 +281,7 @@
   .mobilebar{
     display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
     background:var(--surface);border-top:1px solid var(--line);
-    box-shadow:0 -6px 18px rgba(46,25,84,.08);
+    box-shadow:0 -6px 18px rgba(10,45,86,.08);
     padding-bottom:env(safe-area-inset-bottom);
   }
   .mobilebar a{
@@ -320,7 +320,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
   /* ---------- store cart button (same as shop/cart pages) ---------- */
   .cart-btn{display:inline-flex;align-items:center;gap:8px;align-self:center;position:relative;background:var(--surface);color:var(--violet);border:2px solid var(--violet);border-radius:12px;padding:11px 16px;font-family:"Sora",sans-serif;font-weight:700;font-size:15px;cursor:pointer;flex-shrink:0;text-decoration:none}
   .cart-btn svg{width:20px;height:20px}
-  .cart-count{display:none;min-width:22px;height:22px;border-radius:11px;background:var(--gold);color:#3A2A00;font-size:13px;font-weight:800;align-items:center;justify-content:center;padding:0 5px}
+  .cart-count{display:none;min-width:22px;height:22px;border-radius:11px;background:var(--gold);color:#FFFFFF;font-size:13px;font-weight:800;align-items:center;justify-content:center;padding:0 5px}
   .cart-count.show{display:inline-flex}
   @media (max-width:520px){ header.site .wrap{gap:12px} .cart-btn{padding:10px 12px;font-size:14px} }
 
@@ -328,7 +328,7 @@ nav.main a[aria-current="page"], .mobile-menu a[aria-current="page"]{text-decora
 .hero-search{position:relative;max-width:640px;margin:0 auto}
 .hero-search .search-box{position:relative}
 .hero-search input[type="search"]{width:100%;padding:15px 20px 15px 50px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font-size:16px;outline:none;-webkit-appearance:none;appearance:none}
-.hero-search input[type="search"]:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(91,58,142,.14)}
+.hero-search input[type="search"]:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(10,61,110,.14)}
 .hero-search input[type="search"]::placeholder{color:var(--ink-soft)}
 .hero-search .search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--violet);pointer-events:none}
 .hero-search .search-icon svg{display:block}
